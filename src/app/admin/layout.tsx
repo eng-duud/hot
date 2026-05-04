@@ -10,7 +10,17 @@ export default function AdminLayout({
     <div className="flex min-h-screen bg-brand-dark">
       {/* Sidebar */}
       <aside className="w-72 border-l border-white/10 bg-black/50 p-8 flex flex-col gap-12 sticky top-0 h-screen">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            <img 
+              src="/logo.png" 
+              alt="Logo" 
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
           <span className="text-2xl font-bold tracking-tight">
             <span className="text-brand-orange">هوت</span>{" "}
             <span className="text-white">سبايسي</span>
