@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import { ArrowLeft, Star, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import FeaturedGallery from "@/components/FeaturedGallery";
 
 export default async function Home() {
   // Query featured products
@@ -75,7 +74,26 @@ export default async function Home() {
                 </Link>
               </div>
 
-              <FeaturedGallery products={featuredProducts as any} />
+              <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                {featuredProducts.map((product: any) => (
+                  <div key={product.id} className="snap-center shrink-0 w-[85vw] md:w-[400px] group relative bg-[#1A1A1A] rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-brand-red/40 hover:shadow-[0_0_30px_rgba(230,57,70,0.15)] transition-all duration-500 flex flex-col">
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-80" />
+                    </div>
+                    <div className="p-8 space-y-4 relative z-10 -mt-12 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-2xl md:text-3xl font-black text-brand-beige truncate">{product.name}</h3>
+                        <Star className="w-6 h-6 text-brand-yellow fill-brand-yellow drop-shadow-md flex-shrink-0" />
+                      </div>
+                      <p className="text-white/50 text-base leading-relaxed line-clamp-3 flex-1">{product.description}</p>
+                      <div className="pt-6 mt-auto border-t border-white/5 flex items-center justify-between">
+                        <span className="text-3xl font-black text-brand-red drop-shadow-sm">{product.price} <span className="text-base font-medium text-white/40">ر.ي</span></span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}
