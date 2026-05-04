@@ -5,6 +5,9 @@ import { ArrowLeft, Star, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   // Query featured products
   const featuredProducts = await db.product.findMany({

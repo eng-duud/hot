@@ -3,45 +3,27 @@ import db from "@/lib/db";
 import { Filter, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function MenuPage() {
   const categories = await db.category.findMany({
     include: { products: true }
   });
 
-  // Type for a unified category shape (covers both Prisma result and mock data)
-  type DisplayCategory = {
-    id: string;
-    name: string;
-    products: {
-      id: string;
-      name: string;
-      price: number;
-      description: string | null;
-      image: string | null;
-    }[];
-  };
-
-  // Mock data if DB is empty (for initial preview)
-  const mockCategories: DisplayCategory[] = [
-    {
-      id: "1",
-      name: "برجر اللحم",
-      products: [
-        { id: "1", name: "كلاسيك هوت", price: 2200, description: "لحم بقري مشوي، جبنة، خس، طماطم، صوص خاص", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&h=300&fit=crop" },
-        { id: "2", name: "سبايسي مونستر", price: 2800, description: "قطعتين لحم، هلابينو، صوص ناري، بصل مكرمل", image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=400&h=300&fit=crop" },
-      ]
-    },
-    {
-      id: "2",
-      name: "دجاج مقرمش",
-      products: [
-        { id: "3", name: "زنجر سوبريم", price: 1900, description: "صدر دجاج حار، مايونيز، خس، خبز البطاطس", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=400&h=300&fit=crop" },
-        { id: "4", name: "أجنحة نارية (6 قطع)", price: 1500, description: "أجنحة دجاج مقلية بصوص البافالو الحار", image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?q=80&w=400&h=300&fit=crop" },
-      ]
-    }
-  ];
-
-  const displayCategories: DisplayCategory[] = categories.length > 0 ? categories : mockCategories;
+  if (categories.length === 0) {
+    return (
+      <main className="min-h-screen bg-brand-dark">
+        <Header />
+        <div className="pt-[112px] md:pt-[136px] flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+          <div className="bg-white/5 border border-white/10 rounded-[3rem] p-12 md:p-20 max-w-2xl w-full">
+            <h2 className="text-3xl font-bold mb-4">القائمة <span className="text-brand-red">فارغة</span> حالياً</h2>
+            <p className="text-white/50 text-lg">لم يتم إضافة أي أطباق أو تصنيفات إلى قاعدة البيانات حتى الآن. يرجى إضافتها من لوحة التحكم.</p>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-brand-dark">
@@ -74,7 +56,7 @@ export default async function MenuPage() {
               </div>
               <div className="flex md:flex-col gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-hide">
                 <Button variant="default" className="rounded-full justify-start px-6 whitespace-nowrap">الكل</Button>
-                {displayCategories.map((cat) => (
+                {categories.map((cat) => (
                   <Button key={cat.id} variant="ghost" className="rounded-full justify-start px-6 text-white/60 hover:text-white whitespace-nowrap">
                     {cat.name}
                   </Button>
@@ -84,7 +66,7 @@ export default async function MenuPage() {
 
             {/* Products Grid */}
             <div className="flex-1 space-y-20">
-              {displayCategories.map((cat) => (
+              {categories.map((cat) => (
                 <div key={cat.id} className="space-y-8">
                   <h2 className="text-3xl font-bold border-r-4 border-brand-red pr-4">{cat.name}</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
