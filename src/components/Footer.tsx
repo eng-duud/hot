@@ -24,7 +24,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d0d0d] border-t border-white/[0.06] mt-auto">
+    <footer className="always-dark bg-[#0d0d0d] border-t border-white/[0.06] mt-auto">
       <div className="container mx-auto px-3 sm:px-6 md:px-8 py-10 md:py-14">
 
         {/* ── Always 2×2 grid ── */}
