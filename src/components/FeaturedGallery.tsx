@@ -20,7 +20,7 @@ export default function FeaturedGallery({ products }: { products: Product[] }) {
     
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === products.length - 1 ? 0 : prev + 1));
-    }, 4000); // 4 seconds
+    }, 4000);
     
     return () => clearInterval(interval);
   }, [products.length]);
@@ -38,9 +38,9 @@ export default function FeaturedGallery({ products }: { products: Product[] }) {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto rounded-[3rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group h-[500px] md:h-[600px]">
+    <div className="relative w-full max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden bg-[#0a0a0a] shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-white/10 group h-[550px] md:h-[650px]">
       
-      {/* Background Image layers */}
+      {/* Background Image layers with smooth crossfade */}
       {products.map((product, index) => (
         <div 
           key={product.id}
@@ -54,61 +54,73 @@ export default function FeaturedGallery({ products }: { products: Product[] }) {
             alt={product.name} 
             className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-[10s] ease-out" 
           />
-          {/* Luxury dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/70 to-transparent" />
+          {/* Professional luxury gradient overlay - ensures text readability in any mode */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]/50" />
         </div>
       ))}
 
-      {/* Content overlay */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-8 md:p-16 flex flex-col md:flex-row justify-between items-end gap-6">
-        <div className="space-y-4 max-w-2xl text-right ml-auto">
+      {/* Content Overlay */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-12 flex flex-col md:flex-row justify-between items-end gap-8">
+        
+        {/* Right Side: Title, Description & Indicators */}
+        <div className="space-y-5 max-w-3xl text-right ml-auto w-full order-2 md:order-1">
           <div className="flex items-center justify-end gap-3 mb-2">
-            <h3 className="text-4xl md:text-5xl font-black text-white drop-shadow-lg leading-tight">{currentProduct.name}</h3>
+            <h3 className="text-3xl md:text-5xl font-black text-white drop-shadow-lg leading-tight">{currentProduct.name}</h3>
             <Star className="w-8 h-8 text-brand-yellow fill-brand-yellow drop-shadow-[0_0_15px_rgba(255,186,8,0.6)]" />
           </div>
-          <p className="text-white/70 text-lg md:text-xl leading-relaxed drop-shadow-md line-clamp-2">{currentProduct.description}</p>
+          <p className="text-white/70 text-base md:text-xl leading-relaxed drop-shadow-md line-clamp-3">{currentProduct.description}</p>
+          
+          {/* Indicators Line */}
+          {products.length > 1 && (
+            <div className="flex items-center justify-end gap-2 pt-4">
+              {products.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={cn(
+                    "transition-all duration-300 rounded-full",
+                    index === currentIndex 
+                      ? "w-10 h-1.5 bg-brand-yellow shadow-[0_0_10px_rgba(255,186,8,0.8)]" 
+                      : "w-3 h-1.5 bg-white/20 hover:bg-white/50"
+                  )}
+                />
+              ))}
+            </div>
+          )}
         </div>
         
-        <div className="flex-shrink-0 bg-black/40 backdrop-blur-md border border-white/10 px-8 py-4 rounded-3xl self-end md:self-auto shadow-2xl">
-           <span className="text-4xl md:text-5xl font-black text-brand-yellow drop-shadow-[0_0_15px_rgba(255,186,8,0.3)]">{currentProduct.price} <span className="text-lg font-medium text-white/50">ر.ي</span></span>
+        {/* Left Side: Price Tag and Navigation Arrows */}
+        <div className="flex flex-col gap-4 self-end w-full md:w-auto order-1 md:order-2">
+          
+          {/* Price Box */}
+          <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 px-8 py-5 rounded-[2rem] shadow-2xl flex items-center justify-center relative overflow-hidden group-hover:border-brand-yellow/30 transition-colors">
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="text-4xl md:text-5xl font-black text-brand-yellow drop-shadow-[0_0_15px_rgba(255,186,8,0.4)] relative z-10">
+              {currentProduct.price} <span className="text-lg font-medium text-white/50">ر.ي</span>
+            </span>
+          </div>
+
+          {/* Navigation Arrows placed under the price */}
+          {products.length > 1 && (
+            <div className="flex items-center gap-3 justify-center md:justify-end">
+              <button 
+                onClick={nextSlide} 
+                className="w-14 h-14 flex items-center justify-center rounded-[1.25rem] bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-brand-red hover:border-brand-red hover:-translate-y-1 transition-all duration-300 shadow-lg group/btn"
+              >
+                <ChevronRight className="w-7 h-7 transform group-hover/btn:translate-x-1 transition-transform" /> 
+              </button>
+              <button 
+                onClick={prevSlide} 
+                className="w-14 h-14 flex items-center justify-center rounded-[1.25rem] bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-brand-red hover:border-brand-red hover:-translate-y-1 transition-all duration-300 shadow-lg group/btn"
+              >
+                <ChevronLeft className="w-7 h-7 transform group-hover/btn:-translate-x-1 transition-transform" />
+              </button>
+            </div>
+          )}
         </div>
+
       </div>
-
-      {/* Navigation Arrows */}
-      {products.length > 1 && (
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 flex justify-between px-4 md:px-8 pointer-events-none">
-          <button 
-            onClick={nextSlide} 
-            className="pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-lg border border-white/20 text-white hover:bg-brand-red hover:border-brand-red transition-all duration-300 transform hover:scale-110 shadow-lg"
-          >
-            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
-          </button>
-          <button 
-            onClick={prevSlide} 
-            className="pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-lg border border-white/20 text-white hover:bg-brand-red hover:border-brand-red transition-all duration-300 transform hover:scale-110 shadow-lg"
-          >
-            <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
-          </button>
-        </div>
-      )}
-
-      {/* Indicators */}
-      {products.length > 1 && (
-        <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
-          {products.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={cn(
-                "transition-all duration-300 rounded-full",
-                index === currentIndex 
-                  ? "w-8 h-2.5 bg-brand-yellow shadow-[0_0_10px_rgba(255,186,8,0.8)]" 
-                  : "w-2.5 h-2.5 bg-white/30 hover:bg-white/60"
-              )}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
