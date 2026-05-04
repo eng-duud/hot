@@ -64,3 +64,25 @@ export async function toggleProductBestSeller(id: string, currentState: boolean)
   }
 }
 
+export async function updateProduct(id: string, formData: FormData) {
+  const name = formData.get("name") as string;
+  const description = formData.get("description") as string;
+  const price = parseFloat(formData.get("price") as string);
+  const image = formData.get("image") as string;
+  const categoryId = formData.get("categoryId") as string;
+
+  if (!name || !price || !categoryId) return { error: "الحقول الأساسية مطلوبة" };
+
+  try {
+    await db.product.update({
+      where: { id },
+      data: { name, description, price, image, categoryId },
+    });
+  } catch (error) {
+    return { error: "حدث خطأ أثناء تحديث المنتج" };
+  }
+
+  revalidatePath("/admin/products");
+  revalidatePath("/menu");
+  redirect("/admin/products");
+}

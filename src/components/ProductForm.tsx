@@ -1,7 +1,7 @@
 "use client";
 
-import { Category } from "@prisma/client";
-import { createProduct } from "@/app/actions/products";
+import { Category, Product } from "@prisma/client";
+import { createProduct, updateProduct } from "@/app/actions/products";
 import { Button } from "@/components/ui/button";
 import { Package } from "lucide-react";
 import ImageUpload from "./ImageUpload";
@@ -9,16 +9,21 @@ import { useState } from "react";
 
 interface ProductFormProps {
   categories: Category[];
+  initialData?: Product;
 }
 
-export default function ProductForm({ categories }: ProductFormProps) {
-  const [imageUrl, setImageUrl] = useState("");
+export default function ProductForm({ categories, initialData }: ProductFormProps) {
+  const [imageUrl, setImageUrl] = useState(initialData?.image || "");
+
+  const formAction = initialData 
+    ? updateProduct.bind(null, initialData.id)
+    : createProduct;
 
   return (
     <form action={async (formData) => {
       // Add the image URL to the formData
       if (imageUrl) formData.set("image", imageUrl);
-      await createProduct(formData);
+      await formAction(formData);
     }} className="grid md:grid-cols-2 gap-x-12 gap-y-8">
       
       <div className="space-y-2 md:col-span-2">
@@ -26,6 +31,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
         <input 
           name="name"
           type="text" 
+          defaultValue={initialData?.name}
           required
           className="w-full bg-black/30 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-orange transition-colors"
           placeholder="مثلاً: دبل تشيز برجر"
@@ -36,6 +42,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
         <label className="text-sm font-medium text-white/50 px-1">الوصف</label>
         <textarea 
           name="description"
+          defaultValue={initialData?.description || ""}
           rows={3}
           className="w-full bg-black/30 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-orange transition-colors resize-none"
           placeholder="اشرح مكونات الوجبة وما يميزها..."
@@ -47,6 +54,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
         <input 
           name="price"
           type="number" 
+          defaultValue={initialData?.price}
           step="100"
           required
           className="w-full bg-black/30 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-orange transition-colors"
@@ -58,6 +66,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
         <label className="text-sm font-medium text-white/50 px-1">التصنيف</label>
         <select 
           name="categoryId"
+          defaultValue={initialData?.categoryId}
           required
           className="w-full bg-black/30 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-orange transition-colors appearance-none"
         >
@@ -82,7 +91,7 @@ export default function ProductForm({ categories }: ProductFormProps) {
       <div className="pt-8 md:col-span-2">
         <Button className="w-full h-16 rounded-2xl text-xl font-bold gap-3">
           <Package className="w-6 h-6" />
-          حفظ المنتج
+          {initialData ? "تحديث المنتج" : "حفظ المنتج"}
         </Button>
       </div>
     </form>
