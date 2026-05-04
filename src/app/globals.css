@@ -124,6 +124,30 @@ body {
 [data-theme="light"] .always-dark .bg-white\/5 { background: rgba(255,255,255,0.05) !important; }
 [data-theme="light"] .always-dark .bg-white\/10 { background: rgba(255,255,255,0.1) !important; }
 
+/* ────── Footer hover effects (CSS-only, no JS handlers needed) ────── */
+.footer-social-link {
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.footer-social-link:hover {
+  color: #FF5722 !important;
+  border-color: rgba(255,87,34,0.4) !important;
+  background: rgba(255,87,34,0.1) !important;
+}
+.footer-nav-link {
+  transition: color 0.2s;
+}
+.footer-nav-link:hover {
+  color: rgba(255,255,255,0.9) !important;
+}
+.footer-map-btn {
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.footer-map-btn:hover {
+  background: rgba(255,87,34,0.1) !important;
+  border-color: rgba(255,87,34,0.4) !important;
+  color: rgba(255,255,255,0.9) !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

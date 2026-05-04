@@ -117,22 +117,12 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
+                  className="footer-social-link"
                   style={{
                     width: "clamp(30px, 5vw, 38px)", height: "clamp(30px, 5vw, 38px)",
                     borderRadius: "50%", background: C.surface, border: `1px solid ${C.border}`,
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: C.muted, transition: "all 0.3s",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = C.orange;
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,87,34,0.4)";
-                    (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,87,34,0.1)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = C.muted;
-                    (e.currentTarget as HTMLAnchorElement).style.borderColor = C.border;
-                    (e.currentTarget as HTMLAnchorElement).style.background = C.surface;
+                    color: C.muted, textDecoration: "none",
                   }}
                 >
                   <s.Icon size={15} />
@@ -149,9 +139,8 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    style={{ color: C.muted, fontSize: "clamp(11px, 2vw, 13px)", textDecoration: "none", transition: "color 0.2s" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = C.text)}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = C.muted)}
+                    className="footer-nav-link"
+                    style={{ color: C.muted, fontSize: "clamp(11px, 2vw, 13px)", textDecoration: "none" }}
                   >
                     {link.label}
                   </Link>
@@ -188,22 +177,13 @@ export default function Footer() {
               href="https://maps.app.goo.gl/MwXv8oYtcjWAf1JP7"
               target="_blank"
               rel="noopener noreferrer"
+              className="footer-map-btn"
               style={{
                 display: "flex", alignItems: "center", justifyContent: "center",
                 gap: 8, width: "100%", padding: "clamp(10px, 2vw, 16px) 0",
                 borderRadius: 14, background: C.surface, border: `1px solid ${C.border}`,
                 color: C.muted, fontSize: "clamp(10px, 2vw, 13px)", fontWeight: 700,
-                textDecoration: "none", transition: "all 0.3s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,87,34,0.1)";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,87,34,0.4)";
-                (e.currentTarget as HTMLAnchorElement).style.color = C.text;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = C.surface;
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = C.border;
-                (e.currentTarget as HTMLAnchorElement).style.color = C.muted;
+                textDecoration: "none",
               }}
             >
               <MapPin size={14} style={{ color: C.orange }} />
