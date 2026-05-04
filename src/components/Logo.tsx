@@ -20,8 +20,8 @@ export default function Logo({ className, iconSize = 24, showText = true }: Logo
           <img 
             src="/logo.png" 
             alt="Hot Spicy Logo" 
-            className={cn("object-contain transition-transform group-hover:scale-110", 
-              iconSize === 24 ? "w-20 h-20" : "w-14 h-14"
+            className={cn("object-contain transition-transform group-hover:scale-125 drop-shadow-2xl", 
+              iconSize === 24 ? "w-36 h-36 -mt-4" : "w-16 h-16"
             )}
             onError={() => setError(true)}
           />
