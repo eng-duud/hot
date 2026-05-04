@@ -15,21 +15,13 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Navigation - Hidden on very small screens, visible on md+ */}
-          <nav className="hidden md:flex items-center gap-8 font-bold text-sm uppercase tracking-widest">
+          {/* Navigation - Visible on all screens */}
+          <nav className="flex items-center gap-3 md:gap-8 font-bold text-[10px] md:text-sm uppercase tracking-widest">
             <Link href="/" className="text-white/60 hover:text-brand-orange transition-all">الرئيسية</Link>
             <Link href="/menu" className="text-white/60 hover:text-brand-orange transition-all">القائمة</Link>
             <Link href="/about" className="text-white/60 hover:text-brand-orange transition-all">من نحن</Link>
             <Link href="/contact" className="text-white/60 hover:text-brand-orange transition-all">اتصل بنا</Link>
           </nav>
-
-          <div className="flex items-center gap-4">
-            <a href="tel:770620062">
-              <Button size="sm" className="rounded-full bg-brand-orange hover:bg-brand-orange/90 font-bold px-6">
-                اطلب الآن
-              </Button>
-            </a>
-          </div>
         </div>
       </div>
     </header>
