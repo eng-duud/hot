@@ -25,7 +25,7 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
 const socials = [
   { href: "https://www.instagram.com/hot.spicy021", label: "Instagram", Icon: Instagram },
   { href: "https://wa.me/967780620062",   label: "WhatsApp",  Icon: () => <WhatsAppIcon /> },
-  { href: "https://www.facebook.com/share/1FhxULcJyy/",  label: "Facebook",  Icon: Facebook },
+  { href: "https://www.facebook.com/HotSpicy020",  label: "Facebook",  Icon: Facebook },
 ];
 
 const navLinks = [
