@@ -93,15 +93,15 @@ export default async function Home() {
       )}
 
       <footer className="mt-auto py-20 border-t border-white/10 bg-brand-dark/50">
-        <div className="container mx-auto px-4 space-y-8">
-          {/* Grid Layout: 2 Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <div className="container mx-auto px-2 md:px-4 space-y-8">
+          {/* Grid Layout: Always 2 Columns */}
+          <div className="grid grid-cols-2 gap-3 md:gap-8 items-stretch">
             
             {/* Column 1: Logo & About */}
-            <div className="flex flex-col justify-center p-10 rounded-[3rem] bg-white/5 border border-white/10 space-y-6">
-              <Logo className="justify-start" />
-              <p className="text-white/40 text-lg leading-relaxed">
-                نحن نفتخر بتقديم أجود أنواع اللحوم الطازجة والمكونات المختارة بعناية لنقدم لك وجبة تليق بك.
+            <div className="flex flex-col justify-center p-4 md:p-10 rounded-2xl md:rounded-[3rem] bg-white/5 border border-white/10 space-y-4 md:space-y-6">
+              <Logo className="justify-start scale-75 md:scale-100 origin-right" />
+              <p className="text-white/40 text-xs md:text-lg leading-relaxed">
+                نحن نفتخر بتقديم أجود أنواع اللحوم الطازجة.
               </p>
             </div>
 
@@ -110,38 +110,37 @@ export default async function Home() {
               href="https://maps.app.goo.gl/MwXv8oYtcjWAf1JP7" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-start gap-6 p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-orange/50 transition-all group"
+              className="flex flex-col md:flex-row items-start gap-3 md:gap-6 p-4 md:p-10 rounded-2xl md:rounded-[3rem] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-orange/50 transition-all group"
             >
-              <div className="bg-brand-orange/20 p-5 rounded-2xl group-hover:scale-110 transition-transform">
-                <MapPin className="w-10 h-10 text-brand-orange" />
+              <div className="bg-brand-orange/20 p-3 md:p-5 rounded-xl md:rounded-2xl group-hover:scale-110 transition-transform">
+                <MapPin className="w-6 h-6 md:w-10 md:h-10 text-brand-orange" />
               </div>
               <div>
-                <h4 className="text-2xl font-bold mb-2">موقعنا</h4>
-                <p className="text-white/50 text-lg">صنعاء، الأصبحي، شارع 22 مايو، مقابل المريسي للصرافة</p>
-                <span className="text-brand-orange text-sm mt-4 inline-block font-bold">اضغط لفتح الخريطة &larr;</span>
+                <h4 className="text-sm md:text-2xl font-bold mb-1">موقعنا</h4>
+                <p className="text-white/50 text-[10px] md:text-lg">صنعاء، الأصبحي، شارع 22 مايو</p>
               </div>
             </a>
 
             {/* Column 3: Hours Card */}
-            <div className="flex items-start gap-6 p-10 rounded-[3rem] bg-white/5 border border-white/10">
-              <div className="bg-brand-red/20 p-5 rounded-2xl">
-                <Clock className="w-10 h-10 text-brand-red" />
+            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-6 p-4 md:p-10 rounded-2xl md:rounded-[3rem] bg-white/5 border border-white/10">
+              <div className="bg-brand-red/20 p-3 md:p-5 rounded-xl md:rounded-2xl">
+                <Clock className="w-6 h-6 md:w-10 md:h-10 text-brand-red" />
               </div>
               <div>
-                <h4 className="text-2xl font-bold mb-2">ساعات العمل</h4>
-                <p className="text-white/50 text-lg">يومياً من الساعة 12:00 ظهراً وحتى 2:00 صباحاً</p>
+                <h4 className="text-sm md:text-2xl font-bold mb-1">ساعات العمل</h4>
+                <p className="text-white/50 text-[10px] md:text-lg">يومياً من 12ظ حتى 2ص</p>
               </div>
             </div>
 
             {/* Column 4: Contact Card */}
-            <div className="flex items-start gap-6 p-10 rounded-[3rem] bg-white/5 border border-white/10">
-              <div className="bg-brand-green/20 p-5 rounded-2xl">
-                <Phone className="w-10 h-10 text-brand-green" />
+            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-6 p-4 md:p-10 rounded-2xl md:rounded-[3rem] bg-white/5 border border-white/10">
+              <div className="bg-brand-green/20 p-3 md:p-5 rounded-xl md:rounded-2xl">
+                <Phone className="w-6 h-6 md:w-10 md:h-10 text-brand-green" />
               </div>
               <div>
-                <h4 className="text-2xl font-bold mb-2">اتصل بنا</h4>
-                <p className="text-white/50 text-xl font-bold tracking-wider">770620062 | 776820068</p>
-                <p className="text-white/50 text-xl font-bold tracking-wider mt-1">730620062 | 780620062</p>
+                <h4 className="text-sm md:text-2xl font-bold mb-1">اتصل بنا</h4>
+                <p className="text-white/50 text-[10px] md:text-lg font-bold">770620062</p>
+                <p className="text-white/50 text-[10px] md:text-lg font-bold">730620062</p>
               </div>
             </div>
 
