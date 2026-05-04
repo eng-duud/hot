@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 
-// WhatsApp icon (lucide doesn't have it, using a simple SVG)
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -11,66 +10,54 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const socialLinks = [
-  {
-    href: "https://www.instagram.com",
-    label: "Instagram",
-    icon: <Instagram className="w-5 h-5" />,
-  },
-  {
-    href: "https://wa.me/770620062",
-    label: "WhatsApp",
-    icon: <WhatsAppIcon className="w-5 h-5" />,
-  },
-  {
-    href: "https://www.facebook.com",
-    label: "Facebook",
-    icon: <Facebook className="w-5 h-5" />,
-  },
+  { href: "https://www.instagram.com", label: "Instagram", icon: <Instagram className="w-4 h-4" /> },
+  { href: "https://wa.me/770620062",   label: "WhatsApp",  icon: <WhatsAppIcon className="w-4 h-4" /> },
+  { href: "https://www.facebook.com",  label: "Facebook",  icon: <Facebook className="w-4 h-4" /> },
 ];
 
 const navLinks = [
-  { href: "/", label: "الرئيسية" },
-  { href: "/menu", label: "تصفح قائمة الطعام" },
-  { href: "/about", label: "من نحن" },
+  { href: "/",        label: "الرئيسية" },
+  { href: "/menu",    label: "تصفح القائمة" },
+  { href: "/about",   label: "من نحن" },
   { href: "/contact", label: "تواصل معنا" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-[#0d0d0d] border-t border-white/[0.06] mt-auto">
-      <div className="container mx-auto px-4 md:px-8 py-16">
+      <div className="container mx-auto px-3 sm:px-6 md:px-8 py-10 md:py-14">
 
-        {/* 2×2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        {/* ── Always 2×2 grid ── */}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-10 md:gap-12">
 
-          {/* ── Top Right: Brand ── */}
-          <div className="space-y-6">
+          {/* ① Top-Right: Brand */}
+          <div className="space-y-3 md:space-y-5">
             {/* Logo + Name */}
-            <div className="flex items-center gap-4">
-              <div className="relative w-12 h-12 flex-shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
                 <span className="absolute inset-0 rounded-full bg-brand-orange/25 blur-xl" />
                 <img
                   src="/logo.png"
                   alt="Hot Spicy Logo"
-                  className="relative w-full h-full object-contain drop-shadow-[0_0_14px_rgba(255,87,34,0.85)]"
+                  className="relative w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,87,34,0.85)]"
                 />
               </div>
               <div className="leading-none">
-                <div className="text-2xl font-black">
+                <div className="text-sm sm:text-lg md:text-xl font-black">
                   <span className="text-brand-orange">هوت</span>
                   <span className="text-white"> سبايسي</span>
                 </div>
-                <div className="text-[11px] text-white/25 tracking-[0.2em] uppercase mt-1">Hot Spicy</div>
+                <div className="text-[9px] sm:text-[10px] text-white/25 tracking-[0.15em] uppercase mt-0.5">Hot Spicy</div>
               </div>
             </div>
 
-            {/* Tagline */}
-            <p className="text-white/40 text-sm leading-loose max-w-xs">
+            {/* Tagline — hidden on very small screens */}
+            <p className="text-white/40 text-[11px] sm:text-xs md:text-sm leading-relaxed hidden sm:block">
               شريككم في النكهة الحارة والمذاق الفاخر في قلب صنعاء بأجود المكونات.
             </p>
 
             {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -78,7 +65,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-brand-orange hover:border-brand-orange/40 hover:bg-brand-orange/10 transition-all duration-300"
+                  className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-brand-orange hover:border-brand-orange/40 hover:bg-brand-orange/10 transition-all duration-300"
                 >
                   {s.icon}
                 </a>
@@ -86,18 +73,18 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── Top Left: Quick Links ── */}
-          <div className="space-y-6">
-            <h4 className="text-xl font-black flex items-center gap-3">
-              <span className="w-1 h-6 rounded-full bg-brand-orange inline-block" />
+          {/* ② Top-Left: Quick Links */}
+          <div className="space-y-3 md:space-y-5">
+            <h4 className="text-xs sm:text-sm md:text-lg font-black flex items-center gap-2">
+              <span className="w-0.5 h-4 sm:h-5 rounded-full bg-brand-orange inline-block flex-shrink-0" />
               روابط سريعة
             </h4>
-            <ul className="space-y-4">
+            <ul className="space-y-2 sm:space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/50 hover:text-white text-sm transition-colors duration-200"
+                    className="text-white/50 hover:text-white text-[11px] sm:text-xs md:text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -106,69 +93,66 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Bottom Right: Contact ── */}
-          <div className="space-y-6">
-            <h4 className="text-xl font-black flex items-center gap-3">
-              <span className="w-1 h-6 rounded-full bg-brand-orange inline-block" />
+          {/* ③ Bottom-Right: Contact */}
+          <div className="space-y-3 md:space-y-5">
+            <h4 className="text-xs sm:text-sm md:text-lg font-black flex items-center gap-2">
+              <span className="w-0.5 h-4 sm:h-5 rounded-full bg-brand-orange inline-block flex-shrink-0" />
               تواصل معنا
             </h4>
-            <div className="space-y-5">
+            <div className="space-y-3">
               {/* Phone */}
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 text-brand-orange" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-brand-orange" />
                 </div>
                 <div>
-                  <p className="text-[11px] text-white/30 mb-1">اتصل بنا</p>
-                  <p className="text-white/80 font-bold text-sm leading-relaxed">
+                  <p className="text-[9px] sm:text-[10px] text-white/30">اتصل بنا</p>
+                  <p className="text-white/80 font-bold text-[11px] sm:text-xs md:text-sm leading-relaxed">
                     770620062<br />730620062
                   </p>
                 </div>
               </div>
-
               {/* Email */}
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-4 h-4 text-brand-orange" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-brand-orange" />
                 </div>
                 <div>
-                  <p className="text-[11px] text-white/30 mb-1">البريد الإلكتروني</p>
-                  <p className="text-white/80 font-bold text-sm">info@hotspicy-yemen.com</p>
+                  <p className="text-[9px] sm:text-[10px] text-white/30">البريد</p>
+                  <p className="text-white/80 font-bold text-[10px] sm:text-xs md:text-sm break-all">info@hotspicy-yemen.com</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* ── Bottom Left: Location ── */}
-          <div className="space-y-6">
-            <h4 className="text-xl font-black flex items-center gap-3">
-              <span className="w-1 h-6 rounded-full bg-brand-orange inline-block" />
+          {/* ④ Bottom-Left: Location */}
+          <div className="space-y-3 md:space-y-5">
+            <h4 className="text-xs sm:text-sm md:text-lg font-black flex items-center gap-2">
+              <span className="w-0.5 h-4 sm:h-5 rounded-full bg-brand-orange inline-block flex-shrink-0" />
               موقعنا
             </h4>
-
-            {/* Address */}
-            <div className="flex items-start gap-3 text-white/50 text-sm leading-relaxed">
-              <MapPin className="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" />
-              <span>صنعاء، الأصبحي<br />شارع 22 مايو، مقابل المريسي للصرافة</span>
+            <div className="flex items-start gap-2 text-white/50 text-[11px] sm:text-xs md:text-sm leading-relaxed">
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-brand-orange mt-0.5 flex-shrink-0" />
+              <span>صنعاء، الأصبحي<br />شارع 22 مايو</span>
             </div>
-
-            {/* Map Button */}
             <a
               href="https://maps.app.goo.gl/MwXv8oYtcjWAf1JP7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-brand-orange/10 hover:border-brand-orange/40 transition-all duration-300 group"
+              className="flex items-center justify-center gap-2 w-full py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 hover:bg-brand-orange/10 hover:border-brand-orange/40 transition-all duration-300 group"
             >
-              <MapPin className="w-5 h-5 text-brand-orange group-hover:scale-110 transition-transform" />
-              <span className="font-bold text-white/70 group-hover:text-white text-sm transition-colors">فتح الخريطة التفاعلية</span>
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-brand-orange group-hover:scale-110 transition-transform" />
+              <span className="font-bold text-white/70 group-hover:text-white text-[10px] sm:text-xs md:text-sm transition-colors">
+                فتح الخريطة
+              </span>
             </a>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 pt-6 border-t border-white/[0.05] text-center">
-          <p className="text-xs text-white/20">
+        <div className="mt-10 md:mt-14 pt-5 border-t border-white/[0.05] text-center">
+          <p className="text-[10px] sm:text-xs text-white/20">
             &copy; {new Date().getFullYear()} هوت سبايسي &mdash; جميع الحقوق محفوظة.
           </p>
         </div>
