@@ -1,33 +1,14 @@
 import Link from "next/link";
 import { Flame, PhoneCall } from "lucide-react";
 import { Button } from "./ui/button";
+import Logo from "./Logo";
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-brand-dark/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 flex items-center justify-center">
-            {/* Logo Image */}
-            <img 
-              src="/logo.png" 
-              alt="Hot Spicy Logo" 
-              className="w-full h-full object-contain group-hover:scale-110 transition-transform"
-              onError={(e) => {
-                // Fallback to icon if image is not found
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-              }}
-            />
-            {/* Fallback Icon */}
-            <div className="hidden bg-brand-orange p-2 rounded-full">
-              <Flame className="w-6 h-6 text-white" />
-            </div>
-          </div>
-          <span className="text-2xl font-bold tracking-tight">
-            <span className="text-brand-orange">هوت</span>{" "}
-            <span className="text-white">سبايسي</span>
-          </span>
+        <Link href="/">
+          <Logo />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

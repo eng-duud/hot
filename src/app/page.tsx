@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Clock, MapPin, Phone, Flame } from "lucide-react";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
@@ -112,21 +113,7 @@ export default function Home() {
 
       <footer className="mt-auto py-12 border-t border-white/10 bg-brand-dark">
         <div className="container mx-auto px-4 text-center space-y-6">
-          <div className="flex items-center justify-center gap-3">
-            <img 
-              src="/logo.png" 
-              alt="Logo" 
-              className="w-12 h-12 object-contain"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-            <Flame className="w-8 h-8 text-brand-orange" />
-            <span className="text-2xl font-bold tracking-tight">
-              <span className="text-brand-orange">هوت</span>{" "}
-              <span className="text-white">سبايسي</span>
-            </span>
-          </div>
+          <Logo className="justify-center" />
           <p className="text-white/40 max-w-md mx-auto">
             نحن نفتخر بتقديم أجود أنواع اللحوم الطازجة والمكونات المختارة بعناية لنقدم لك وجبة تليق بك.
           </p>
