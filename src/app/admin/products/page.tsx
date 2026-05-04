@@ -17,10 +17,12 @@ export default async function AdminProducts() {
           <h1 className="text-4xl font-bold mb-2">إدارة المنتجات</h1>
           <p className="text-white/40">إضافة وتعديل وحذف الوجبات من قائمة الطعام.</p>
         </div>
-        <Button className="rounded-2xl h-14 px-8 gap-2 font-bold text-lg">
-          <Plus className="w-5 h-5" />
-          منتج جديد
-        </Button>
+        <Link href="/admin/products/new">
+          <Button className="rounded-2xl h-14 px-8 gap-2 font-bold text-lg">
+            <Plus className="w-5 h-5" />
+            منتج جديد
+          </Button>
+        </Link>
       </div>
 
       <div className="bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden">

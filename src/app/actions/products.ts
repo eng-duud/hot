@@ -2,6 +2,7 @@
 
 import db from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function createProduct(formData: FormData) {
   const name = formData.get("name") as string;
@@ -16,12 +17,13 @@ export async function createProduct(formData: FormData) {
     await db.product.create({
       data: { name, description, price, image, categoryId },
     });
-    revalidatePath("/admin/products");
-    revalidatePath("/menu");
-    return { success: "تمت إضافة المنتج بنجاح" };
   } catch (error) {
     return { error: "حدث خطأ أثناء إضافة المنتج" };
   }
+
+  revalidatePath("/admin/products");
+  revalidatePath("/menu");
+  redirect("/admin/products");
 }
 
 export async function deleteProduct(id: string) {
