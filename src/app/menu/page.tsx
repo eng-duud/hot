@@ -47,11 +47,11 @@ export default async function MenuPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      {/* pt-[108px] = h-16 (brand bar) + h-11 (nav bar) */}
-      <div className="pt-[108px]">
+      {/* pt-[128px] md:pt-[152px] = accommodates new premium header */}
+      <div className="pt-[128px] md:pt-[152px]">
         <div className="bg-white/5 border-b border-white/10 py-12">
           <div className="container mx-auto px-4 md:px-8 text-center space-y-6">
-            <h1 className="text-4xl font-bold">قائمة <span className="text-brand-orange">الطعام</span></h1>
+            <h1 className="text-4xl font-bold">قائمة <span className="text-brand-red">الطعام</span></h1>
             <div className="max-w-xl mx-auto relative">
               <Search className="absolute right-6 top-1/2 -translate-y-1/2 text-white/30 w-5 h-5" />
               <input
@@ -86,7 +86,7 @@ export default async function MenuPage() {
             <div className="flex-1 space-y-20">
               {displayCategories.map((cat) => (
                 <div key={cat.id} className="space-y-8">
-                  <h2 className="text-3xl font-bold border-r-4 border-brand-orange pr-4">{cat.name}</h2>
+                  <h2 className="text-3xl font-bold border-r-4 border-brand-red pr-4">{cat.name}</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {cat.products.map((product) => (
                       <div key={product.id} className="group bg-brand-gray rounded-[2rem] border border-white/5 hover:border-brand-orange/30 transition-all duration-300 p-4">

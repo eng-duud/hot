@@ -6,7 +6,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      <div className="pt-[108px]">
+      <div className="pt-[128px] md:pt-[152px]">
       {/* Story Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2000&auto=format&fit=crop')] bg-fixed bg-cover bg-center opacity-5 -z-10" />
@@ -16,7 +16,7 @@ export default function AboutPage() {
             <Flame className="w-5 h-5" />
             <span>قصتنا</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">شغفنا هو سر <span className="text-brand-orange">نكهتنا!</span></h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">شغفنا هو سر <span className="text-brand-red">نكهتنا!</span></h1>
           <p className="text-xl text-white/70 leading-relaxed">
             بدأت رحلة "هوت سبايسي" من رؤية بسيطة: تقديم وجبات سريعة بجودة المطاعم الفاخرة. نحن نؤمن أن البرجر ليس مجرد وجبة، بل هو تجربة غنية بالحواس تبدأ من رائحة الشواء وتنتهي بآخر قطمة.
           </p>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold">لماذا <span className="text-brand-orange">هوت سبايسي؟</span></h2>
+              <h2 className="text-4xl font-bold">لماذا <span className="text-brand-red">هوت سبايسي؟</span></h2>
               <p className="text-white/60 leading-relaxed text-lg">
                 في صنعاء، الخيارات كثيرة، لكن في هوت سبايسي نقدم لك الفرق الذي يمكنك تذوقه. نستخدم توابلنا السرية الخاصة التي تم تطويرها على مدار سنوات لتعطي المذاق "الحار والمميز" الذي يحبه عملاؤنا.
               </p>

@@ -23,7 +23,7 @@ export default async function Home() {
       <Header />
 
       {/* pt-27 compensates for the two-bar fixed header (h-16 + h-11) */}
-      <div className="pt-[108px] flex-1">
+      <div className="pt-[128px] md:pt-[152px] flex-1">
         <Hero />
 
         {/* Featured Products */}
@@ -32,7 +32,7 @@ export default async function Home() {
             <div className="container mx-auto px-4 md:px-8">
               <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div className="space-y-4">
-                  <h2 className="text-4xl font-bold">أطباقنا <span className="text-brand-orange">المميزة</span></h2>
+                  <h2 className="text-4xl font-bold">أطباقنا <span className="text-brand-red">المميزة</span></h2>
                   <p className="text-white/60 max-w-xl">استمتع بتشكيلة مختارة من أفضل وجباتنا، المحضرة بكل حب وعناية لتناسب ذوقك الرفيع.</p>
                 </div>
                 <Link href="/menu">
@@ -71,7 +71,7 @@ export default async function Home() {
           <section className="py-24">
             <div className="container mx-auto px-4 md:px-8 text-center">
               <div className="space-y-4 mb-16">
-                <h2 className="text-4xl font-bold">الأكثر <span className="text-brand-orange">مبيعاً</span></h2>
+                <h2 className="text-4xl font-bold">الأكثر <span className="text-brand-red">مبيعاً</span></h2>
                 <p className="text-white/60 mx-auto max-w-2xl">الوجبات التي نالت إعجاب الجميع وأصبحت الأكثر طلباً في هوت سبايسي.</p>
               </div>
 

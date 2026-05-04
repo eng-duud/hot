@@ -3,13 +3,15 @@ import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
 
 /* ── Inline color tokens — immune to any theme overrides ── */
 const C = {
-  text:      "rgba(255,255,255,0.85)",
-  muted:     "rgba(255,255,255,0.45)",
-  faint:     "rgba(255,255,255,0.22)",
-  border:    "rgba(255,255,255,0.09)",
-  surface:   "rgba(255,255,255,0.05)",
-  orange:    "#FF5722",
-  bg:        "#0d0d0d",
+  text:      "#F5EBE0",       /* Beige for main text */
+  muted:     "rgba(245,235,224,0.55)", /* Muted beige */
+  faint:     "rgba(245,235,224,0.25)",
+  border:    "rgba(245,235,224,0.08)",
+  surface:   "rgba(245,235,224,0.04)",
+  primary:   "#E63946",       /* Red */
+  secondary: "#FFBA08",       /* Fiery Yellow */
+  green:     "#2A9D8F",       /* Green accent */
+  bg:        "#121212",
 };
 
 function WhatsAppIcon({ size = 16 }: { size?: number }) {
@@ -37,7 +39,7 @@ const navLinks = [
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h4 style={{ color: C.text, display: "flex", alignItems: "center", gap: "10px", fontWeight: 900, fontSize: "clamp(13px, 2.5vw, 18px)", marginBottom: 0 }}>
-      <span style={{ width: 3, height: 20, borderRadius: 99, background: C.orange, flexShrink: 0, display: "inline-block" }} />
+      <span style={{ width: 3, height: 20, borderRadius: 99, background: C.primary, flexShrink: 0, display: "inline-block" }} />
       {children}
     </h4>
   );
@@ -51,7 +53,7 @@ function ContactRow({ icon, label, value }: { icon: React.ReactNode; label: stri
         width: 34, height: 34, borderRadius: "50%",
         background: C.surface, border: `1px solid ${C.border}`,
         display: "flex", alignItems: "center", justifyContent: "center",
-        flexShrink: 0, color: C.orange,
+        flexShrink: 0, color: C.primary,
       }}>
         {icon}
       </div>
@@ -96,8 +98,8 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontWeight: 900, fontSize: "clamp(15px, 3vw, 22px)", lineHeight: 1 }}>
-                  <span style={{ color: C.orange }}>هوت</span>
-                  <span style={{ color: C.text }}> سبايسي</span>
+                  <span style={{ color: C.primary }}>هوت</span>
+                  <span style={{ color: C.secondary }}> سبايسي</span>
                 </div>
                 <div style={{ color: C.faint, fontSize: "clamp(8px, 1.5vw, 11px)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 3 }}>Hot Spicy</div>
               </div>
@@ -170,7 +172,7 @@ export default function Footer() {
           <div style={{ display: "flex", flexDirection: "column", gap: "clamp(10px, 2vw, 20px)" }}>
             <SectionTitle>موقعنا</SectionTitle>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8, color: C.muted, fontSize: "clamp(11px, 2vw, 13px)", lineHeight: 1.7 }}>
-              <MapPin size={14} style={{ color: C.orange, marginTop: 3, flexShrink: 0 }} />
+              <MapPin size={14} style={{ color: C.primary, marginTop: 3, flexShrink: 0 }} />
               <span>صنعاء، الأصبحي<br />شارع 22 مايو</span>
             </div>
             <a
@@ -186,7 +188,7 @@ export default function Footer() {
                 textDecoration: "none",
               }}
             >
-              <MapPin size={14} style={{ color: C.orange }} />
+              <MapPin size={14} style={{ color: C.primary }} />
               فتح الخريطة
             </a>
           </div>

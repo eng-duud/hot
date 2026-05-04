@@ -10,9 +10,11 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          orange: "#FF5722",
-          red: "#D32F2F",
-          green: "#388E3C",
+          orange: "#FFBA08", /* Fallback to Fiery Yellow to avoid breaking existing classes */
+          red: "#E63946",
+          green: "#2A9D8F",
+          yellow: "#FFBA08", /* Fiery Yellow */
+          beige: "#F5EBE0",
           dark: "#121212",
           gray: "#1E1E1E",
         },

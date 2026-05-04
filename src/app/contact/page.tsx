@@ -30,13 +30,13 @@ export default function ContactPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      <div className="pt-[108px]">
+      <div className="pt-[128px] md:pt-[152px]">
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
           
           <div className="space-y-12">
             <div className="space-y-4">
-              <h1 className="text-5xl font-bold">تواصل <span className="text-brand-orange">معنا</span></h1>
+              <h1 className="text-5xl font-bold">تواصل <span className="text-brand-red">معنا</span></h1>
               <p className="text-white/60 text-lg">نحن هنا للإجابة على استفساراتكم واقتراحاتكم. لا تتردد في مراسلتنا.</p>
             </div>
 

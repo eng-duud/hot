@@ -20,13 +20,13 @@ export default function Hero() {
 
           {/* Marketing Content on the Left */}
           <div className="text-right space-y-6 flex-1">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-brand-orange font-bold text-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-green/10 border border-brand-green/20 text-brand-green font-bold text-sm">
               <Flame className="w-5 h-5" />
               <span>أفضل برجر مشوي على اللهب في صنعاء</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
-              <span className="text-brand-orange italic">هوت سبايسي</span>
+              <span className="text-brand-red italic drop-shadow-md">هوت سبايسي</span>
               <br />
               فخامة المذاق في كل قطعة
             </h1>
