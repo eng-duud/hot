@@ -68,9 +68,12 @@ export default function Header() {
       </div>
 
       {/* ── Nav Bar: Edge-to-Edge Modern Bar ── */}
-      <div className="w-full bg-[#121212]/95 backdrop-blur-3xl border-b border-white/[0.04] shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20">
-        <div className="container mx-auto px-0 md:px-8">
-          <nav className="flex items-center justify-center gap-1 md:gap-2 h-12 md:h-14 overflow-hidden px-1">
+      <div className="w-full bg-[#1a1a1a]/95 backdrop-blur-3xl border-b border-t border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-20 relative">
+        {/* Subtle top glow line to separate from top bar */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-red/50 to-transparent" />
+        
+        <div className="container mx-auto px-2 md:px-8">
+          <nav className="flex items-center justify-center gap-2 md:gap-4 h-14 md:h-16 overflow-hidden px-1 py-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const Icon = link.icon;
@@ -79,13 +82,13 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "flex items-center justify-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-6 md:py-2.5 text-[11px] md:text-base font-bold rounded-full whitespace-nowrap transition-all duration-300 mx-0.5 md:mx-1 flex-1 md:flex-none",
+                    "flex items-center justify-center gap-1.5 md:gap-2 px-3 py-2 md:px-8 md:py-2.5 text-[12px] md:text-base font-bold rounded-full whitespace-nowrap transition-all duration-300 flex-1 md:flex-none",
                     isActive 
-                      ? "text-brand-dark bg-gradient-to-r from-brand-yellow to-[#FFD000] shadow-[0_0_15px_rgba(255,186,8,0.3)]" 
-                      : "text-brand-beige/70 hover:text-white hover:bg-white/5"
+                      ? "text-brand-dark bg-gradient-to-r from-brand-yellow to-[#FFD000] shadow-[0_0_20px_rgba(255,186,8,0.5)] transform scale-105" 
+                      : "text-white/90 hover:text-brand-yellow hover:bg-white/10 hover:scale-105"
                   )}
                 >
-                  <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-brand-dark" : "text-brand-beige/50")} />
+                  <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-brand-dark" : "text-brand-red drop-shadow-md")} />
                   <span>{link.label}</span>
                 </Link>
               );
