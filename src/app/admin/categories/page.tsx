@@ -22,7 +22,7 @@ export default async function AdminCategories() {
         {/* Add Category Form */}
         <div className="bg-white/5 border border-white/10 p-10 rounded-[2.5rem] space-y-8 h-fit">
           <h3 className="text-2xl font-bold">إضافة تصنيف جديد</h3>
-          <form action={createCategory} className="space-y-6">
+          <form action={async (formData) => { "use server"; await createCategory(formData); }} className="space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-medium text-white/50 px-1">اسم التصنيف</label>
               <input 
