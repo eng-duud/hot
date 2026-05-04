@@ -19,7 +19,6 @@ export default function Footer() {
                   src="/logo.png"
                   alt="Hot Spicy Logo"
                   className="relative w-full h-full object-contain drop-shadow-[0_0_12px_rgba(255,87,34,0.8)]"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
                 />
               </div>
               <div className="leading-none">
