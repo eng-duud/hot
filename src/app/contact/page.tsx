@@ -15,14 +15,28 @@ export default function ContactPage() {
     setLoading(true);
     setStatus(null);
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const result = await submitContactForm(formData);
     
     setLoading(false);
     setStatus(result);
     
     if (result.success) {
-      (event.target as HTMLFormElement).reset();
+      // Get data before resetting
+      const name = formData.get("name") as string;
+      const phone = formData.get("phone") as string;
+      const message = formData.get("message") as string;
+      
+      // Prepare WhatsApp URL
+      const waText = `مرحباً هوت سبايسي،\n\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالرسالة:\n${message}`;
+      const waUrl = `https://wa.me/967780620062?text=${encodeURIComponent(waText)}`;
+      
+      // Open WhatsApp in a new tab
+      window.open(waUrl, '_blank');
+      
+      // Reset form
+      form.reset();
     }
   }
 
@@ -57,8 +71,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-1">أرقام التواصل</h4>
-                  <p className="text-white/50">770620062 | 776820068</p>
-                  <p className="text-white/50">730620062 | 780620062</p>
+                  <p className="text-white/50">780620062 | 770620062</p>
+                  <p className="text-white/50">730620062 | 776820068</p>
                 </div>
               </div>
 
