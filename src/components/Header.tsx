@@ -20,8 +20,8 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <a href="tel:770620062">
-            <Button variant="default" className="rounded-full px-6 gap-2 bg-brand-green hover:bg-brand-green/90 animate-pulse">
-              <PhoneCall className="w-4 h-4" />
+            <Button variant="default" className="rounded-full px-8 gap-3 bg-gradient-to-r from-brand-green to-emerald-500 hover:scale-105 transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] animate-pulse border-none font-bold">
+              <PhoneCall className="w-5 h-5" />
               اتصل واطلب الآن
             </Button>
           </a>

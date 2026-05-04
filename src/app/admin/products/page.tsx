@@ -1,8 +1,9 @@
 import db from "@/lib/db";
-import { Plus, Trash2, Edit, Package } from "lucide-react";
+import { Plus, Trash2, Edit, Package, Star, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { deleteProduct } from "@/app/actions/products";
+import { deleteProduct, toggleProductFeature, toggleProductBestSeller } from "@/app/actions/products";
+import { cn } from "@/lib/utils";
 
 export default async function AdminProducts() {
   const products = await db.product.findMany({
@@ -31,6 +32,8 @@ export default async function AdminProducts() {
             <tr className="border-b border-white/10 bg-white/5">
               <th className="p-8 font-bold">المنتج</th>
               <th className="p-8 font-bold">التصنيف</th>
+              <th className="p-8 font-bold text-center">المميز</th>
+              <th className="p-8 font-bold text-center">الأكثر مبيعاً</th>
               <th className="p-8 font-bold">السعر</th>
               <th className="p-8 font-bold text-left">العمليات</th>
             </tr>
@@ -38,7 +41,7 @@ export default async function AdminProducts() {
           <tbody>
             {products.length === 0 ? (
               <tr>
-                <td colSpan={4} className="p-20 text-center text-white/20 italic">
+                <td colSpan={6} className="p-20 text-center text-white/20 italic">
                    <Package className="w-12 h-12 mx-auto mb-4 opacity-10" />
                    لا يوجد منتجات حالياً. أضف أول منتج لك!
                 </td>
@@ -62,7 +65,27 @@ export default async function AdminProducts() {
                       {product.category.name}
                     </span>
                   </td>
-                  <td className="p-8 font-bold text-xl">{product.price} ر.ي</td>
+                  <td className="p-8 text-center">
+                    <form action={async () => { "use server"; await toggleProductFeature(product.id, product.isFeatured); }}>
+                      <button className={cn(
+                        "p-2 rounded-lg transition-all",
+                        product.isFeatured ? "text-yellow-400 bg-yellow-400/10" : "text-white/20 hover:text-white/40"
+                      )}>
+                        <Star className={cn("w-6 h-6", product.isFeatured && "fill-yellow-400")} />
+                      </button>
+                    </form>
+                  </td>
+                  <td className="p-8 text-center">
+                    <form action={async () => { "use server"; await toggleProductBestSeller(product.id, product.isBestSeller); }}>
+                      <button className={cn(
+                        "p-2 rounded-lg transition-all",
+                        product.isBestSeller ? "text-brand-orange bg-brand-orange/10" : "text-white/20 hover:text-white/40"
+                      )}>
+                        <Trophy className={cn("w-6 h-6", product.isBestSeller && "fill-brand-orange")} />
+                      </button>
+                    </form>
+                  </td>
+                  <td className="p-8 font-bold text-xl whitespace-nowrap">{product.price} ر.ي</td>
                   <td className="p-8">
                     <div className="flex items-center justify-end gap-2">
                        <button className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all">

@@ -18,6 +18,8 @@ model Product {
   image       String?
   categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
+  isFeatured  Boolean  @default(false)
+  isBestSeller Boolean @default(false)
   createdAt   DateTime @default(now())
 }
 

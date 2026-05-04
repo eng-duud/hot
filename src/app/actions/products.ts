@@ -31,8 +31,36 @@ export async function deleteProduct(id: string) {
     await db.product.delete({ where: { id } });
     revalidatePath("/admin/products");
     revalidatePath("/menu");
+    revalidatePath("/");
     return { success: "تم حذف المنتج بنجاح" };
   } catch (error) {
     return { error: "حدث خطأ أثناء حذف المنتج" };
   }
 }
+
+export async function toggleProductFeature(id: string, currentState: boolean) {
+  try {
+    await db.product.update({
+      where: { id },
+      data: { isFeatured: !currentState }
+    });
+    revalidatePath("/admin/products");
+    revalidatePath("/");
+  } catch (error) {
+    return { error: "فشل تحديث الحالة" };
+  }
+}
+
+export async function toggleProductBestSeller(id: string, currentState: boolean) {
+  try {
+    await db.product.update({
+      where: { id },
+      data: { isBestSeller: !currentState }
+    });
+    revalidatePath("/admin/products");
+    revalidatePath("/");
+  } catch (error) {
+    return { error: "فشل تحديث الحالة" };
+  }
+}
+
