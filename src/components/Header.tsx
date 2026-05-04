@@ -1,28 +1,41 @@
+"use client";
+
 import Link from "next/link";
-import { Flame, PhoneCall, Menu } from "lucide-react";
-import { Button } from "./ui/button";
-import Logo from "./Logo";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/", label: "الرئيسية" },
+    { href: "/menu", label: "القائمة" },
+    { href: "/about", label: "من نحن" },
+    { href: "/contact", label: "اتصل بنا" },
+  ];
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="bg-brand-dark/40 backdrop-blur-xl border border-white/10 rounded-full h-16 md:h-20 px-6 md:px-10 flex items-center justify-between shadow-2xl">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-xl md:text-2xl font-black tracking-tighter">
-              <span className="text-brand-orange group-hover:text-white transition-colors">هوت</span>{" "}
-              <span className="text-white group-hover:text-brand-orange transition-colors">سبايسي</span>
-            </span>
-          </Link>
-
-          {/* Navigation - Visible on all screens */}
-          <nav className="flex items-center gap-3 md:gap-8 font-bold text-[10px] md:text-sm uppercase tracking-widest">
-            <Link href="/" className="text-white/60 hover:text-brand-orange transition-all">الرئيسية</Link>
-            <Link href="/menu" className="text-white/60 hover:text-brand-orange transition-all">القائمة</Link>
-            <Link href="/about" className="text-white/60 hover:text-brand-orange transition-all">من نحن</Link>
-            <Link href="/contact" className="text-white/60 hover:text-brand-orange transition-all">اتصل بنا</Link>
-          </nav>
-        </div>
+      <div className="container mx-auto max-w-fit">
+        <nav className="bg-brand-dark/60 backdrop-blur-xl border border-white/10 rounded-full p-1.5 flex items-center gap-1 shadow-2xl">
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link 
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 whitespace-nowrap",
+                  isActive 
+                    ? "bg-brand-orange text-white shadow-lg shadow-brand-orange/20 scale-105" 
+                    : "text-white/50 hover:text-white hover:bg-white/5"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
       </div>
     </header>
   );
