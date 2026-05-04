@@ -14,14 +14,14 @@ export default function Logo({ className, iconSize = 24, showText = true }: Logo
   const [error, setError] = useState(false);
 
   return (
-    <div className={cn("flex items-center gap-10 group h-full", className)}>
-      <div className="relative w-40 h-20 flex items-center justify-center animate-float overflow-visible">
+    <div className={cn("flex items-center gap-4 group overflow-visible", className)}>
+      <div className="relative flex items-center justify-center animate-float overflow-visible">
         {!error ? (
           <img 
             src="/logo.png" 
             alt="Hot Spicy Logo" 
-            className={cn("object-contain transition-transform group-hover:scale-110 drop-shadow-2xl absolute top-1/2 -translate-y-1/2 z-50", 
-              iconSize === 24 ? "w-44 h-44" : "w-16 h-16"
+            className={cn("object-contain transition-transform group-hover:scale-125 drop-shadow-2xl relative z-50", 
+              iconSize === 24 ? "w-48 h-48 -mt-6" : "w-16 h-16"
             )}
             onError={() => setError(true)}
           />
