@@ -40,7 +40,7 @@ export default async function Home() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {bestSellers.map((product) => (
+                {bestSellers.map((product: any) => (
                   <div key={product.id} className="group bg-white/5 p-6 rounded-3xl border border-white/10 hover:bg-white/10 hover:border-brand-yellow/30 hover:-translate-y-2 transition-all duration-300 text-right shadow-lg">
                     <div className="relative aspect-square rounded-2xl overflow-hidden mb-6">
                       <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -75,7 +75,7 @@ export default async function Home() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                {featuredProducts.map((product) => (
+                {featuredProducts.map((product: any) => (
                   <div key={product.id} className="group relative bg-[#1A1A1A] rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-brand-red/40 hover:shadow-[0_0_30px_rgba(230,57,70,0.15)] transition-all duration-500 flex flex-col">
                     <div className="aspect-[4/3] overflow-hidden relative">
                       <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
