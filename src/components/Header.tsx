@@ -52,11 +52,11 @@ export default function Header() {
               {/* Call Now Button */}
               <Link 
                 href="tel:770620062" 
-                className="group relative flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-tr from-brand-red to-orange-600 text-white transition-all duration-300 shadow-[0_0_15px_rgba(230,57,70,0.4)] hover:shadow-[0_0_25px_rgba(230,57,70,0.6)] hover:-translate-y-1"
+                className="group relative flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-tr from-green-600 to-emerald-400 text-white transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] hover:-translate-y-1"
                 title="اتصل بنا الآن"
               >
                 {/* Ping animation effect */}
-                <span className="absolute inset-0 rounded-full bg-brand-red animate-ping opacity-20 group-hover:opacity-40" style={{ animationDuration: '2s' }} />
+                <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20 group-hover:opacity-40" style={{ animationDuration: '2s' }} />
                 <Phone className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:scale-110 transition-transform" />
               </Link>
               
