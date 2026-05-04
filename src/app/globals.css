@@ -106,31 +106,59 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-/* ────── Subtle Luxury Fire Glow ────── */
+/* ────── Soft Hanging Flame Tongues ────── */
 .luxury-fire-top {
   position: relative;
 }
 
+/* Layer 1: Darker, larger, slower flames hanging in the back */
 .luxury-fire-top::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 60%; /* Fades out by the middle of the header */
-  background: linear-gradient(to bottom, #CC3300 0%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-  opacity: 0.4;
-  filter: blur(12px);
+  height: 60px;
+  background: linear-gradient(to bottom, #CC3300, #9D0208);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='400' height='120' viewBox='0 0 400 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,20 Q375,100 350,25 Q325,60 300,15 Q275,110 250,30 Q225,70 200,20 Q175,90 150,25 Q125,120 100,10 Q75,60 50,30 Q25,100 0,20 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='400' height='120' viewBox='0 0 400 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L400,0 L400,20 Q375,100 350,25 Q325,60 300,15 Q275,110 250,30 Q225,70 200,20 Q175,90 150,25 Q125,120 100,10 Q75,60 50,30 Q25,100 0,20 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 400px 100%;
+  -webkit-mask-repeat: repeat-x;
+  filter: blur(4px);
   pointer-events: none;
-  animation: fire-breathe 5s ease-in-out infinite alternate;
-  z-index: 0; /* Ensure it stays behind the logo and links */
+  animation: flame-dance-1 10s infinite linear;
+  z-index: 0;
 }
 
-@keyframes fire-breathe {
-  0% { opacity: 0.25; transform: scaleY(0.95); }
-  100% { opacity: 0.55; transform: scaleY(1.05); }
+/* Layer 2: Brighter, shorter, faster flames swaying in the front */
+.luxury-fire-top::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  background: linear-gradient(to bottom, #FF4D00, #FFBA08);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='300' height='100' viewBox='0 0 300 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L300,0 L300,15 Q275,80 250,20 Q225,50 200,10 Q175,90 150,25 Q125,60 100,15 Q75,100 50,20 Q25,70 0,15 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='300' height='100' viewBox='0 0 300 100' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L300,0 L300,15 Q275,80 250,20 Q225,50 200,10 Q175,90 150,25 Q125,60 100,15 Q75,100 50,20 Q25,70 0,15 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 300px 100%;
+  -webkit-mask-repeat: repeat-x;
+  filter: blur(2.5px);
+  pointer-events: none;
+  animation: flame-dance-2 7s infinite linear;
+  z-index: 0;
+}
+
+@keyframes flame-dance-1 {
+  0% { -webkit-mask-position: 0px 0; opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { -webkit-mask-position: 400px 0; opacity: 0.3; }
+}
+
+@keyframes flame-dance-2 {
+  0% { -webkit-mask-position: 0px 0; opacity: 0.5; }
+  50% { opacity: 0.75; }
+  100% { -webkit-mask-position: -300px 0; opacity: 0.5; }
 }
 
 /* ────── Header Premium Styles ────── */
