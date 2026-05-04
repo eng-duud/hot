@@ -30,7 +30,7 @@ export default function ContactPage() {
       
       // Prepare WhatsApp URL
       const waText = `مرحباً هوت سبايسي،\n\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالرسالة:\n${message}`;
-      const waUrl = `https://wa.me/967780620062?text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://wa.me/967770620062?text=${encodeURIComponent(waText)}`;
       
       // Open WhatsApp in a new tab
       window.open(waUrl, '_blank');
@@ -71,8 +71,12 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-1">أرقام التواصل</h4>
-                  <p className="text-white/50">780620062 | 770620062</p>
-                  <p className="text-white/50">730620062 | 776820068</p>
+                  <p className="text-white/50 space-x-2 space-x-reverse">
+                    <a href="tel:780620062" className="hover:text-brand-yellow transition-colors">780620062</a> <span>|</span> <a href="tel:770620062" className="hover:text-brand-yellow transition-colors">770620062</a>
+                  </p>
+                  <p className="text-white/50 space-x-2 space-x-reverse">
+                    <a href="tel:730620062" className="hover:text-brand-yellow transition-colors">730620062</a> <span>|</span> <a href="tel:776820068" className="hover:text-brand-yellow transition-colors">776820068</a>
+                  </p>
                 </div>
               </div>
 
@@ -82,7 +86,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold mb-1">البريد الإلكتروني</h4>
-                  <p className="text-white/50">info@hotspicy-yemen.com</p>
+                  <a href="mailto:hotspicy7706@gmail.com" className="text-white/50 hover:text-brand-yellow transition-colors">hotspicy7706@gmail.com</a>
                 </div>
               </div>
             </div>

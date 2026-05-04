@@ -158,12 +158,18 @@ export default function Footer() {
               <ContactRow
                 icon={<Phone size={14} />}
                 label="اتصل بنا"
-                value={<>780620062<br />770620062</>}
+                value={
+                  <>
+                    <a href="tel:780620062" className="footer-nav-link" style={{ textDecoration: "none", color: "inherit" }}>780620062</a>
+                    <br />
+                    <a href="tel:770620062" className="footer-nav-link" style={{ textDecoration: "none", color: "inherit" }}>770620062</a>
+                  </>
+                }
               />
               <ContactRow
                 icon={<Mail size={14} />}
-                label="البريد"
-                value="info@hotspicy-yemen.com"
+                label="راسلنا"
+                value={<a href="mailto:hotspicy7706@gmail.com" className="footer-nav-link" style={{ textDecoration: "none", color: "inherit" }}>hotspicy7706@gmail.com</a>}
               />
             </div>
           </div>
