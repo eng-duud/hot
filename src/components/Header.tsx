@@ -6,7 +6,7 @@ import Logo from "./Logo";
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-brand-dark/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 h-28 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/">
           <Logo />
         </Link>
