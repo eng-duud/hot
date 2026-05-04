@@ -92,48 +92,52 @@ export default async function Home() {
         </section>
       )}
 
-      {/* Info Cards */}
-      <section className="py-20 bg-brand-dark/50">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-            <div className="bg-brand-orange/20 p-4 rounded-2xl">
-              <MapPin className="w-8 h-8 text-brand-orange" />
+      <footer className="mt-auto py-20 border-t border-white/10 bg-brand-dark/50">
+        <div className="container mx-auto px-4 space-y-16">
+          {/* First Row: Logo, Marketing, Location */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            <div className="space-y-6">
+              <Logo className="justify-start" />
+              <p className="text-white/40 text-lg leading-relaxed">
+                نحن نفتخر بتقديم أجود أنواع اللحوم الطازجة والمكونات المختارة بعناية لنقدم لك وجبة تليق بك.
+              </p>
             </div>
-            <div>
-              <h4 className="text-xl font-bold mb-2">موقعنا</h4>
-              <p className="text-white/50">صنعاء، الأصبحي، شارع 22 مايو، مقابل المريسي للصرافة</p>
-            </div>
-          </div>
-          
-          <div className="flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-            <div className="bg-brand-red/20 p-4 rounded-2xl">
-              <Clock className="w-8 h-8 text-brand-red" />
-            </div>
-            <div>
-              <h4 className="text-xl font-bold mb-2">ساعات العمل</h4>
-              <p className="text-white/50">يومياً من الساعة 12:00 ظهراً <br /> وحتى 2:00 صباحاً</p>
+            
+            <div className="md:col-span-2 flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10">
+              <div className="bg-brand-orange/20 p-4 rounded-2xl">
+                <MapPin className="w-8 h-8 text-brand-orange" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">موقعنا</h4>
+                <p className="text-white/50 text-lg">صنعاء، الأصبحي، شارع 22 مايو، مقابل المريسي للصرافة</p>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-            <div className="bg-brand-green/20 p-4 rounded-2xl">
-              <Phone className="w-8 h-8 text-brand-green" />
+          {/* Second Row: Hours and Contact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+              <div className="bg-brand-red/20 p-4 rounded-2xl">
+                <Clock className="w-8 h-8 text-brand-red" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">ساعات العمل</h4>
+                <p className="text-white/50">يومياً من الساعة 12:00 ظهراً وحتى 2:00 صباحاً</p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-xl font-bold mb-2">اتصل بنا</h4>
-              <p className="text-white/50">770620062 | 776820068 <br /> 730620062 | 780620062</p>
+
+            <div className="flex items-start gap-6 p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+              <div className="bg-brand-green/20 p-4 rounded-2xl">
+                <Phone className="w-8 h-8 text-brand-green" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold mb-2">اتصل بنا</h4>
+                <p className="text-white/50 text-lg font-bold tracking-wider">770620062 | 776820068 | 730620062</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <footer className="mt-auto py-12 border-t border-white/10 bg-brand-dark">
-        <div className="container mx-auto px-4 text-center space-y-6">
-          <Logo className="justify-center" />
-          <p className="text-white/40 max-w-md mx-auto">
-            نحن نفتخر بتقديم أجود أنواع اللحوم الطازجة والمكونات المختارة بعناية لنقدم لك وجبة تليق بك.
-          </p>
-          <div className="text-sm text-white/20 pt-8">
+          <div className="text-center text-sm text-white/20 pt-8 border-t border-white/5">
             &copy; {new Date().getFullYear()} هوت سبايسي - جميع الحقوق محفوظة.
           </div>
         </div>
