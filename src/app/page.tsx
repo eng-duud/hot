@@ -24,8 +24,8 @@ export default async function Home() {
     <main className="flex flex-col min-h-screen">
       <Header />
 
-      {/* Adjust padding to compensate for the new taller premium header & floating pill */}
-      <div className="pt-[140px] md:pt-[170px] flex-1">
+      {/* Adjust padding to compensate for the new thinner header */}
+      <div className="pt-[112px] md:pt-[136px] flex-1">
         
         {/* 1. Hero / Intro */}
         <Hero />

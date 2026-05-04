@@ -47,8 +47,8 @@ export default async function MenuPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      {/* pt-[128px] md:pt-[152px] = accommodates new premium header */}
-      <div className="pt-[128px] md:pt-[152px]">
+      {/* pt-[112px] md:pt-[136px] = accommodates new thinner premium header */}
+      <div className="pt-[112px] md:pt-[136px]">
         <div className="bg-white/5 border-b border-white/10 py-12">
           <div className="container mx-auto px-4 md:px-8 text-center space-y-6">
             <h1 className="text-4xl font-bold">قائمة <span className="text-brand-red">الطعام</span></h1>
