@@ -2,23 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ────── Dark Theme (default) ────── */
+/* ────── Dark Theme (Midnight Blue) ────── */
 :root,
 [data-theme="dark"] {
-  --foreground-rgb: 244, 244, 245;
-  --background: #0F0F11;
-  --surface: #18181B;
-  --border: rgba(255,255,255,0.06);
-  --text-muted: rgba(244,244,245,0.5);
+  --foreground-rgb: 226, 232, 240;
+  --background: #0B0E14;
+  --surface: #151921;
+  --border: rgba(255,255,255,0.05);
+  --text-muted: rgba(148,163,184,0.6);
 }
 
-/* ────── Light Theme ────── */
+/* ────── Light Theme (Soft Stone) ────── */
 [data-theme="light"] {
-  --foreground-rgb: 24, 24, 27;
-  --background: #F8F9FA;
+  --foreground-rgb: 15, 23, 42;
+  --background: #F1F5F9;
   --surface: #FFFFFF;
-  --border: rgba(0,0,0,0.05);
-  --text-muted: rgba(24,24,27,0.5);
+  --border: rgba(0,0,0,0.06);
+  --text-muted: rgba(71,85,105,0.6);
 }
 
 [data-theme="light"] body {

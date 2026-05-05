@@ -10,13 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          orange: "#FFBA08", /* Fallback to Fiery Yellow to avoid breaking existing classes */
-          red: "#E63946",
+          orange: "#E9C46A", 
+          red: "#D62828",
           green: "#2A9D8F",
-          yellow: "#FFBA08", /* Fiery Yellow */
+          yellow: "#E9C46A",
           beige: "#F5EBE0",
-          dark: "#0F0F11",
-          gray: "#18181B",
+          dark: "#0B0E14",
+          gray: "#151921",
         },
       },
       backgroundImage: {
