@@ -5,6 +5,9 @@ import Link from "next/link";
 import { deleteProduct, toggleProductFeature, toggleProductBestSeller } from "@/app/actions/products";
 import { cn } from "@/lib/utils";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function AdminProducts() {
   const products = await db.product.findMany({
     include: { category: true },

@@ -4,6 +4,9 @@ import Link from "next/link";
 import ProductForm from "@/components/ProductForm";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function EditProductPage({ params }: { params: { id: string } }) {
   const categories = await db.category.findMany();
   

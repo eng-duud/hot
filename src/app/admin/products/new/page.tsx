@@ -3,6 +3,9 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import ProductForm from "@/components/ProductForm";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function NewProductPage() {
   const categories = await db.category.findMany();
 
