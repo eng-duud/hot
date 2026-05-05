@@ -1,7 +1,14 @@
 import Header from "@/components/Header";
 import { CheckCircle2, Flame, History, ShieldCheck, Star, Users } from "lucide-react";
+import AboutSlider from "@/components/AboutSlider";
+import db from "@/lib/db";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // @ts-ignore
+  const sliderImages = await db.aboutSliderImage.findMany({
+    orderBy: { createdAt: "desc" }
+  });
+
   return (
     <main className="min-h-screen bg-brand-dark">
       <Header />
@@ -16,9 +23,15 @@ export default function AboutPage() {
             <Flame className="w-5 h-5" />
             <span>قصتنا</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">شغفنا هو سر <span className="text-brand-red">نكهتنا!</span></h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white">شغفنا هو سر <span className="text-brand-red">نكهتنا!</span></h1>
           <p className="text-xl text-white/70 leading-relaxed">
-            بدأت رحلة "هوت سبايسي" من رؤية بسيطة: تقديم وجبات سريعة بجودة المطاعم الفاخرة. نحن نؤمن أن البرجر ليس مجرد وجبة، بل هو تجربة غنية بالحواس تبدأ من رائحة الشواء وتنتهي بآخر قطمة.
+            نحن مطعم متخصص في تقديم أشهى الوجبات الطازجة بأعلى معايير الجودة
+            <br />
+            نؤمن أن الطعام ليس مجرد وجبة… بل تجربة متكاملة
+            <br />
+            فريقنا يعمل يوميًا ليقدم لك نكهات استثنائية ترضي جميع الأذواق
+            <br />
+            نستخدم مكونات طازجة مختارة بعناية لضمان أفضل جودة ممكنة
           </p>
         </div>
       </section>
@@ -28,26 +41,26 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="space-y-6 text-center md:text-right">
-              <div className="bg-brand-orange/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0">
+              <div className="bg-brand-orange/10 dark:bg-brand-orange/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0 border border-brand-orange/10 dark:border-transparent">
                 <ShieldCheck className="w-8 h-8 text-brand-orange" />
               </div>
-              <h3 className="text-2xl font-bold">أعلى معايير الجودة</h3>
+              <h3 className="text-2xl font-bold text-white">أعلى معايير الجودة</h3>
               <p className="text-white/50 leading-relaxed">نختار لحومنا بعناية فائقة من الموردين المحليين المعتمدين لضمان الطزاجة والمذاق الأصيل يومياً.</p>
             </div>
 
             <div className="space-y-6 text-center md:text-right">
-              <div className="bg-brand-red/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0">
+              <div className="bg-brand-red/10 dark:bg-brand-red/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0 border border-brand-red/10 dark:border-transparent">
                 <Star className="w-8 h-8 text-brand-red" />
               </div>
-              <h3 className="text-2xl font-bold">مكونات طازجة</h3>
-              <p className="text-white/50 leading-relaxed">الخضروات لدينا تُقطف وتُغسل وتُحضر يومياً في مطبخنا لضمان القرمشة المثالية في كل وجبة.</p>
+              <h3 className="text-2xl font-bold text-white">مكونات طازجة</h3>
+              <p className="text-white/50 leading-relaxed">نختار خضرواتنا بعناية ونُحضّرها يوميًا لضمان طزاجتها ونكهتها الغنية التي تُكمل كل طبق بشكل مثالي.</p>
             </div>
 
             <div className="space-y-6 text-center md:text-right">
-              <div className="bg-brand-green/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0">
+              <div className="bg-brand-green/10 dark:bg-brand-green/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto md:mr-0 border border-brand-green/10 dark:border-transparent">
                 <Users className="w-8 h-8 text-brand-green" />
               </div>
-              <h3 className="text-2xl font-bold">فريق محترف</h3>
+              <h3 className="text-2xl font-bold text-white">فريق محترف</h3>
               <p className="text-white/50 leading-relaxed">طهاة "هوت سبايسي" مدربون على أعلى مستوى لضمان تناسق النكهة والسرعة في الأداء.</p>
             </div>
           </div>
@@ -59,17 +72,13 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
           <div className="relative">
              <div className="absolute -inset-4 bg-brand-orange/20 blur-3xl rounded-full" />
-             <img 
-               src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" 
-               alt="Chef at work" 
-               className="relative z-10 rounded-[3rem] border border-white/10 shadow-2xl"
-             />
+             <AboutSlider images={sliderImages} />
           </div>
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold">لماذا <span className="text-brand-red">هوت سبايسي؟</span></h2>
+              <h2 className="text-4xl font-bold text-white">لماذا <span className="text-brand-red">هوت سبايسي؟</span></h2>
               <p className="text-white/60 leading-relaxed text-lg">
-                في صنعاء، الخيارات كثيرة، لكن في هوت سبايسي نقدم لك الفرق الذي يمكنك تذوقه. نستخدم توابلنا السرية الخاصة التي تم تطويرها على مدار سنوات لتعطي المذاق "الحار والمميز" الذي يحبه عملاؤنا.
+                في صنعاء، الخيارات كثيرة، لكن في هوت سبايسي نقدم لك الفرق الذي يمكنك تذوقه. نستخدم توابلنا الخاصة التي تم تطويرها على مدار سنوات لتعطي المذاق "الحار والمميز" الذي يحبه عملاؤنا.
               </p>
             </div>
             

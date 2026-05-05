@@ -23,18 +23,6 @@ export default function ContactPage() {
     setStatus(result);
     
     if (result.success) {
-      // Get data before resetting
-      const name = formData.get("name") as string;
-      const phone = formData.get("phone") as string;
-      const message = formData.get("message") as string;
-      
-      // Prepare WhatsApp URL
-      const waText = `مرحباً هوت سبايسي،\n\nالاسم: ${name}\nرقم الهاتف: ${phone}\nالرسالة:\n${message}`;
-      const waUrl = `https://wa.me/967770620062?text=${encodeURIComponent(waText)}`;
-      
-      // Open WhatsApp in a new tab
-      window.open(waUrl, '_blank');
-      
       // Reset form
       form.reset();
     }

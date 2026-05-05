@@ -36,3 +36,9 @@ model Message {
   messageContent String
   createdAt      DateTime @default(now())
 }
+
+model AboutSliderImage {
+  id        String   @id @default(cuid())
+  url       String
+  createdAt DateTime @default(now())
+}

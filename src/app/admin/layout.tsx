@@ -1,4 +1,4 @@
-import { LayoutDashboard, MessageSquare, Package, Tag, LogOut, Home } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Package, Tag, LogOut, Home, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
@@ -40,6 +40,10 @@ export default function AdminLayout({
           <Link href="/admin/messages" className="flex items-center gap-2 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl text-white/50 hover:bg-white/5 hover:text-white transition-colors whitespace-nowrap">
             <MessageSquare className="w-4 h-4 lg:w-5 lg:h-5" />
             <span className="font-medium text-sm lg:text-base">رسائل العملاء</span>
+          </Link>
+          <Link href="/admin/about" className="flex items-center gap-2 lg:gap-4 px-4 py-3 lg:px-6 lg:py-4 rounded-xl lg:rounded-2xl text-white/50 hover:bg-white/5 hover:text-white transition-colors whitespace-nowrap">
+            <ImageIcon className="w-4 h-4 lg:w-5 lg:h-5" />
+            <span className="font-medium text-sm lg:text-base">سلايدر من نحن</span>
           </Link>
         </nav>
 
