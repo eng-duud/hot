@@ -1,9 +1,9 @@
 "use client";
 
-import { CldUploadWidget } from "next-cloudinary";
 import { Button } from "@/components/ui/button";
-import { ImagePlus, Trash } from "lucide-react";
+import { ImagePlus, Trash, Loader2 } from "lucide-react";
 import Image from "next/image";
+import { useState, useRef } from "react";
 
 interface ImageUploadProps {
   value: string;
@@ -16,8 +16,45 @@ export default function ImageUpload({
   onChange,
   onRemove
 }: ImageUploadProps) {
-  const onUpload = (result: any) => {
-    onChange(result.info.secure_url);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const onUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "");
+
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.secure_url) {
+        onChange(data.secure_url);
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const onClick = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -45,25 +82,30 @@ export default function ImageUpload({
         )}
       </div>
       
-      <CldUploadWidget onUpload={onUpload} uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}>
-        {({ open }) => {
-          const onClick = () => {
-            open();
-          };
+      <input 
+        type="file" 
+        accept="image/*" 
+        className="hidden" 
+        ref={fileInputRef} 
+        onChange={onUpload}
+      />
 
-          return (
-            <Button 
-              type="button" 
-              onClick={onClick}
-              variant="outline"
-              className="w-full h-32 border-dashed border-2 border-white/10 rounded-2xl hover:border-brand-orange/50 hover:bg-white/5 transition-all flex flex-col gap-2"
-            >
-              <ImagePlus className="h-8 w-8 text-white/30" />
-              <span className="text-white/50 font-medium">اضغط لرفع صورة المنتج</span>
-            </Button>
-          );
-        }}
-      </CldUploadWidget>
+      <Button 
+        type="button" 
+        disabled={isUploading}
+        onClick={onClick}
+        variant="outline"
+        className="w-full h-32 border-dashed border-2 border-white/10 rounded-2xl hover:border-brand-orange/50 hover:bg-white/5 transition-all flex flex-col gap-2"
+      >
+        {isUploading ? (
+          <Loader2 className="h-8 w-8 text-white/30 animate-spin" />
+        ) : (
+          <ImagePlus className="h-8 w-8 text-white/30" />
+        )}
+        <span className="text-white/50 font-medium">
+          {isUploading ? "جاري الرفع..." : "اضغط لرفع صورة المنتج"}
+        </span>
+      </Button>
     </div>
   );
 }

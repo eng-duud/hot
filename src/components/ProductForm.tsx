@@ -70,9 +70,9 @@ export default function ProductForm({ categories, initialData }: ProductFormProp
           required
           className="w-full bg-black/30 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-orange transition-colors appearance-none"
         >
-          <option value="">اختر التصنيف...</option>
+          <option value="" className="bg-[#1a1a1a] text-white">اختر التصنيف...</option>
           {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>{cat.name}</option>
+            <option key={cat.id} value={cat.id} className="bg-[#1a1a1a] text-white">{cat.name}</option>
           ))}
         </select>
       </div>

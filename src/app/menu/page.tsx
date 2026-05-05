@@ -56,7 +56,7 @@ export default async function MenuPage() {
               </div>
               <div className="flex md:flex-col gap-2 overflow-x-auto pb-4 md:pb-0 scrollbar-hide">
                 <Button variant="default" className="rounded-full justify-start px-6 whitespace-nowrap">الكل</Button>
-                {categories.map((cat) => (
+                {categories.map((cat: any) => (
                   <Button key={cat.id} variant="ghost" className="rounded-full justify-start px-6 text-white/60 hover:text-white whitespace-nowrap">
                     {cat.name}
                   </Button>
@@ -66,11 +66,11 @@ export default async function MenuPage() {
 
             {/* Products Grid */}
             <div className="flex-1 space-y-20">
-              {categories.map((cat) => (
+              {categories.map((cat: any) => (
                 <div key={cat.id} className="space-y-8">
                   <h2 className="text-3xl font-bold border-r-4 border-brand-red pr-4">{cat.name}</h2>
                   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {cat.products.map((product) => (
+                    {cat.products.map((product: any) => (
                       <div key={product.id} className="group bg-brand-gray rounded-[2rem] border border-white/5 hover:border-brand-orange/30 transition-all duration-300 p-4">
                         <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-6">
                           <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />

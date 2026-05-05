@@ -18,10 +18,10 @@ export default function AdminLayout({
             <span className="text-[10px] bg-brand-orange px-2 py-0.5 rounded-full text-white">ADMIN</span>
           </Link>
           
-          <button className="lg:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg text-brand-red/70 hover:bg-brand-red/10 hover:text-brand-red transition-colors text-xs font-bold">
+          <Link href="/" className="lg:hidden flex items-center gap-2 px-3 py-1.5 rounded-lg text-brand-red/70 hover:bg-brand-red/10 hover:text-brand-red transition-colors text-xs font-bold">
             <LogOut className="w-4 h-4" />
             خروج
-          </button>
+          </Link>
         </div>
 
         <nav className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-hide w-full lg:flex-1">
@@ -48,10 +48,10 @@ export default function AdminLayout({
             <Home className="w-5 h-5" />
             <span className="font-medium">العودة للموقع</span>
           </Link>
-          <button className="w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-brand-red/50 hover:bg-brand-red/10 hover:text-brand-red transition-colors">
+          <Link href="/" className="w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-brand-red/50 hover:bg-brand-red/10 hover:text-brand-red transition-colors">
             <LogOut className="w-5 h-5" />
             <span className="font-medium">تسجيل الخروج</span>
-          </button>
+          </Link>
         </div>
       </aside>
 
