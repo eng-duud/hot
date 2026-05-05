@@ -15,8 +15,8 @@ const config: Config = {
           green: "#2A9D8F",
           yellow: "#FFBA08", /* Fiery Yellow */
           beige: "#F5EBE0",
-          dark: "#121212",
-          gray: "#1E1E1E",
+          dark: "#0F0F11",
+          gray: "#18181B",
         },
       },
       backgroundImage: {

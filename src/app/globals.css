@@ -5,20 +5,20 @@
 /* ────── Dark Theme (default) ────── */
 :root,
 [data-theme="dark"] {
-  --foreground-rgb: 255, 255, 255;
-  --background: #121212;
-  --surface: #1E1E1E;
-  --border: rgba(255,255,255,0.08);
-  --text-muted: rgba(255,255,255,0.4);
+  --foreground-rgb: 244, 244, 245;
+  --background: #0F0F11;
+  --surface: #18181B;
+  --border: rgba(255,255,255,0.06);
+  --text-muted: rgba(244,244,245,0.5);
 }
 
 /* ────── Light Theme ────── */
 [data-theme="light"] {
-  --foreground-rgb: 15, 15, 15;
-  --background: #F5F5F5;
+  --foreground-rgb: 24, 24, 27;
+  --background: #F8F9FA;
   --surface: #FFFFFF;
-  --border: rgba(0,0,0,0.08);
-  --text-muted: rgba(0,0,0,0.45);
+  --border: rgba(0,0,0,0.05);
+  --text-muted: rgba(24,24,27,0.5);
 }
 
 [data-theme="light"] body {
