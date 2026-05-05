@@ -179,7 +179,7 @@ export default function Footer() {
             <SectionTitle>موقعنا</SectionTitle>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8, color: C.muted, fontSize: "clamp(11px, 2vw, 13px)", lineHeight: 1.7 }}>
               <MapPin size={14} style={{ color: C.primary, marginTop: 3, flexShrink: 0 }} />
-              <span>صنعاء، الأصبحي<br />شارع 22 مايو</span>
+              <span>صنعاء، الأصبحي<br />شارع 22 مايو مقابل شركة المريسي للصرافة</span>
             </div>
             <a
               href="https://maps.app.goo.gl/MwXv8oYtcjWAf1JP7"
