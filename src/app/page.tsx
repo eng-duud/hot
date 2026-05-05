@@ -82,16 +82,16 @@ export default async function Home() {
                   <div key={product.id} className="snap-center shrink-0 w-[85vw] md:w-[400px] group relative bg-[#1A1A1A] rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-brand-red/40 hover:shadow-[0_0_30px_rgba(230,57,70,0.15)] transition-all duration-500 flex flex-col">
                     <div className="aspect-[4/3] overflow-hidden relative">
                       <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent opacity-80" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-40" />
                     </div>
-                    <div className="p-8 space-y-4 relative z-10 -mt-12 flex-1 flex flex-col">
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-2xl md:text-3xl font-black text-brand-beige truncate">{product.name}</h3>
-                        <Star className="w-6 h-6 text-brand-yellow fill-brand-yellow drop-shadow-md flex-shrink-0" />
+                    <div className="p-6 md:p-8 space-y-4 flex-1 flex flex-col">
+                      <div className="flex justify-between items-start gap-4">
+                        <h3 className="text-xl md:text-2xl font-black text-brand-beige leading-tight">{product.name}</h3>
+                        <Star className="w-5 h-5 md:w-6 md:h-6 text-brand-yellow fill-brand-yellow drop-shadow-md flex-shrink-0" />
                       </div>
-                      <p className="text-white/50 text-base leading-relaxed line-clamp-3 flex-1">{product.description}</p>
+                      <p className="text-white/50 text-sm md:text-base leading-relaxed line-clamp-2 flex-1">{product.description}</p>
                       <div className="pt-6 mt-auto border-t border-white/5 flex items-center justify-between">
-                        <span className="text-3xl font-black text-brand-red drop-shadow-sm">{product.price} <span className="text-base font-medium text-white/40">ر.ي</span></span>
+                        <span className="text-2xl md:text-3xl font-black text-brand-red drop-shadow-sm">{product.price} <span className="text-sm md:text-base font-medium text-white/40">ر.ي</span></span>
                       </div>
                     </div>
                   </div>
