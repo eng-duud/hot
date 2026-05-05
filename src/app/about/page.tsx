@@ -37,7 +37,7 @@ export default async function AboutPage() {
       </section>
 
       {/* Values Grid */}
-      <section className="py-24 bg-white/5">
+      <section className="py-16 md:py-24 bg-white/5">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-12">
             <div className="space-y-6 text-center md:text-right">
@@ -68,11 +68,13 @@ export default async function AboutPage() {
       </section>
 
       {/* Legacy/History */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div className="relative">
              <div className="absolute -inset-4 bg-brand-orange/20 blur-3xl rounded-full" />
-             <AboutSlider images={sliderImages} />
+             <div className="aspect-[4/3] md:aspect-video">
+                <AboutSlider images={sliderImages} />
+             </div>
           </div>
           <div className="space-y-8">
             <div className="space-y-4">

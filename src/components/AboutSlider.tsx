@@ -32,7 +32,7 @@ export default function AboutSlider({ images }: AboutSliderProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="relative z-10 rounded-[3rem] border border-white/10 shadow-2xl aspect-video bg-white/5 flex items-center justify-center overflow-hidden">
+      <div className="relative z-10 rounded-[3rem] border border-white/10 shadow-2xl h-full w-full bg-white/5 flex items-center justify-center overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop" 
           className="w-full h-full object-cover opacity-50"
@@ -43,7 +43,7 @@ export default function AboutSlider({ images }: AboutSliderProps) {
   }
 
   return (
-    <div className="relative group z-10 rounded-[3rem] border border-white/10 shadow-2xl aspect-video overflow-hidden bg-black">
+    <div className="relative group z-10 rounded-[3rem] border border-white/10 shadow-2xl h-full w-full overflow-hidden bg-black">
       {/* Slider Images */}
       {images.map((img, index) => (
         <div

@@ -43,6 +43,10 @@
 [data-theme="light"] .text-white\/30 {
   color: rgba(0,0,0,0.5) !important;
 }
+[data-theme="light"] .text-white\/80,
+[data-theme="light"] .text-white\/90 {
+  color: rgba(0,0,0,0.8) !important;
+}
 [data-theme="light"] .border-white\/10,
 [data-theme="light"] .border-white\/\[0\.06\],
 [data-theme="light"] .border-white\/\[0\.04\],
