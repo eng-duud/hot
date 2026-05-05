@@ -5,14 +5,42 @@ import { revalidatePath } from "next/cache";
 
 export async function createCategory(formData: FormData) {
   const name = formData.get("name") as string;
+  const image = formData.get("image") as string;
 
   if (!name) return { error: "الاسم مطلوب" };
 
   try {
-    await db.category.create({ data: { name } });
+    await (db.category as any).create({ 
+      data: { 
+        name,
+        image: image || null
+      } 
+    });
     revalidatePath("/admin/categories");
     revalidatePath("/menu");
     return { success: "تمت إضافة التصنيف بنجاح" };
+  } catch (error) {
+    return { error: "حدث خطأ ما" };
+  }
+}
+
+export async function updateCategory(id: string, formData: FormData) {
+  const name = formData.get("name") as string;
+  const image = formData.get("image") as string;
+
+  if (!name) return { error: "الاسم مطلوب" };
+
+  try {
+    await (db.category as any).update({
+      where: { id },
+      data: { 
+        name,
+        image: image || null
+      }
+    });
+    revalidatePath("/admin/categories");
+    revalidatePath("/menu");
+    return { success: "تم تحديث التصنيف بنجاح" };
   } catch (error) {
     return { error: "حدث خطأ ما" };
   }
