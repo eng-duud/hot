@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
       {/* ── Top Bar: Premium Branding ── */}
-      <div className="w-full bg-white/95 dark:bg-brand-dark/95 backdrop-blur-2xl border-b border-black/[0.04] dark:border-white/[0.08] shadow-sm dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)] relative z-10 luxury-fire-top">
+      <div className="w-full bg-brand-dark/95 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)] relative z-10 luxury-fire-top">
         <div className="container mx-auto px-4 md:px-8 relative z-20">
           <div className="flex items-center justify-between h-16 md:h-20 pb-1 md:pb-2 pt-1">
             
@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-4 group">
               {/* Logo with custom float/pulse animation */}
               <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
-                <span className="absolute inset-0 rounded-full bg-brand-red/20 dark:bg-brand-red/20 blur-xl group-hover:bg-brand-yellow/30 transition-colors duration-500" />
+                <span className="absolute inset-0 rounded-full bg-brand-red/20 blur-xl group-hover:bg-brand-yellow/30 transition-colors duration-500" />
                 <img
                   src="/logo.png"
                   alt="Hot Spicy Logo"
@@ -37,11 +37,11 @@ export default function Header() {
               
               {/* Typography */}
               <div className="flex flex-col leading-none">
-                <span className="text-xl md:text-2xl font-black tracking-tight drop-shadow-sm dark:drop-shadow-md">
+                <span className="text-xl md:text-2xl font-black tracking-tight drop-shadow-md">
                   <span className="text-brand-red">هوت</span>
                   <span className="text-brand-yellow"> سبايسي</span>
                 </span>
-                <span className="text-[10px] md:text-xs text-black/40 dark:text-brand-beige/50 font-bold tracking-[0.3em] uppercase mt-1 md:mt-1.5">
+                <span className="text-[10px] md:text-xs text-brand-beige/50 font-bold tracking-[0.3em] uppercase mt-1 md:mt-1.5">
                   Hot Spicy
                 </span>
               </div>
@@ -68,9 +68,9 @@ export default function Header() {
       </div>
 
       {/* ── Nav Bar: Edge-to-Edge Modern Bar ── */}
-      <div className="w-full bg-gray-50/95 dark:bg-brand-gray/95 backdrop-blur-3xl border-b border-t border-black/[0.05] dark:border-white/10 shadow-md dark:shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-20 relative">
+      <div className="w-full bg-brand-gray/95 backdrop-blur-3xl border-b border-t border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-20 relative">
         {/* Subtle top glow line to separate from top bar */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-red/30 dark:via-brand-red/50 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-red/50 to-transparent" />
         
         <div className="container mx-auto px-2 md:px-8">
           <nav className="flex items-center justify-center gap-2 md:gap-4 h-14 md:h-16 overflow-hidden px-1 py-1">
@@ -84,11 +84,11 @@ export default function Header() {
                   className={cn(
                     "flex items-center justify-center gap-1.5 md:gap-2 px-3 py-2 md:px-8 md:py-2.5 text-[12px] md:text-base font-bold rounded-full whitespace-nowrap transition-all duration-300 flex-1 md:flex-none",
                     isActive 
-                      ? "text-white dark:text-brand-dark bg-gradient-to-r from-brand-red to-brand-orange dark:from-brand-yellow dark:to-[#FFD000] shadow-[0_4px_15px_rgba(230,57,70,0.4)] dark:shadow-[0_0_20px_rgba(255,186,8,0.5)] transform scale-105" 
-                      : "text-black/70 dark:text-white/90 hover:text-brand-red dark:hover:text-brand-yellow hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105"
+                      ? "text-brand-dark bg-gradient-to-r from-brand-yellow to-[#FFD000] shadow-[0_0_20px_rgba(255,186,8,0.5)] transform scale-105" 
+                      : "text-white/90 hover:text-brand-yellow hover:bg-white/10 hover:scale-105"
                   )}
                 >
-                  <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-white dark:text-brand-dark" : "text-brand-red dark:text-brand-red drop-shadow-sm dark:drop-shadow-md")} />
+                  <Icon className={cn("w-4 h-4 md:w-5 md:h-5", isActive ? "text-brand-dark" : "text-brand-red drop-shadow-md")} />
                   <span>{link.label}</span>
                 </Link>
               );
@@ -96,7 +96,6 @@ export default function Header() {
           </nav>
         </div>
       </div>
-
     </header>
   );
 }
