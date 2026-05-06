@@ -16,21 +16,13 @@ export default function Hero() {
         <div className="flex flex-row-reverse items-center justify-center md:justify-between gap-4 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
 
           {/* Logo on the Right */}
-          <div className="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 lg:w-[400px] lg:h-[400px] relative flex items-center justify-center perspective-1000">
-            <div className="absolute inset-0 bg-brand-red/20 blur-[100px] rounded-full animate-pulse-slow" />
-            <div className="relative w-full h-full preserve-3d floating-3d-animation">
-              <img 
-                src="/logo.png" 
-                alt="Hot Spicy Logo" 
-                className="relative w-full h-full object-contain drop-shadow-[0_0_40px_rgba(255,77,0,0.6)] hover:scale-110 transition-transform duration-700 ease-out z-10"
-              />
-              {/* 3D Depth Layer */}
-              <img 
-                src="/logo.png" 
-                alt="" 
-                className="absolute inset-0 w-full h-full object-contain opacity-30 blur-sm translate-z-[-10px] brightness-50 pointer-events-none"
-              />
-            </div>
+          <div className="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 lg:w-[400px] lg:h-[400px] relative flex items-center justify-center">
+            <div className="absolute inset-0 bg-brand-red/20 blur-[80px] rounded-full animate-pulse" />
+            <img 
+              src="/logo.png" 
+              alt="Hot Spicy Logo" 
+              className="relative w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,77,0,0.5)] hover:scale-105 transition-transform duration-700"
+            />
           </div>
 
           {/* Text Content on the Left */}
@@ -66,26 +58,26 @@ export default function Hero() {
           </div>
 
           {/* Features Icons */}
-          <div className="grid grid-cols-3 gap-3 md:gap-6 w-full perspective-1000">
-            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:rotate-y-12 hover:-rotate-x-12 hover:translate-z-10 transition-all duration-500 preserve-3d shadow-xl">
-              <div className="bg-brand-yellow/20 p-3 md:p-4 rounded-full translate-z-20">
+          <div className="grid grid-cols-3 gap-3 md:gap-6 w-full">
+            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:-translate-y-2 transition-all duration-300">
+              <div className="bg-brand-yellow/20 p-3 md:p-4 rounded-full">
                 <Award className="w-6 h-6 md:w-10 md:h-10 text-brand-yellow drop-shadow-[0_0_10px_rgba(255,186,8,0.5)]" />
               </div>
-              <div className="text-[10px] md:text-lg font-bold text-white text-center translate-z-10">جودة عالية</div>
+              <div className="text-[10px] md:text-lg font-bold text-white text-center">جودة عالية</div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:rotate-y-12 hover:-rotate-x-12 hover:translate-z-10 transition-all duration-500 preserve-3d shadow-xl">
-              <div className="bg-emerald-500/20 p-3 md:p-4 rounded-full translate-z-20">
+            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:-translate-y-2 transition-all duration-300">
+              <div className="bg-emerald-500/20 p-3 md:p-4 rounded-full">
                 <ShieldCheck className="w-6 h-6 md:w-10 md:h-10 text-emerald-400 drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
               </div>
-              <div className="text-[10px] md:text-lg font-bold text-white text-center translate-z-10">نظافة وأمان</div>
+              <div className="text-[10px] md:text-lg font-bold text-white text-center">نظافة وأمان</div>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:rotate-y-12 hover:-rotate-x-12 hover:translate-z-10 transition-all duration-500 preserve-3d shadow-xl">
-              <div className="bg-brand-red/20 p-3 md:p-4 rounded-full translate-z-20">
+            <div className="flex flex-col items-center justify-center gap-2 md:gap-4 bg-white/5 backdrop-blur-sm border border-white/10 p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] hover:bg-white/10 hover:-translate-y-2 transition-all duration-300">
+              <div className="bg-brand-red/20 p-3 md:p-4 rounded-full">
                 <Truck className="w-6 h-6 md:w-10 md:h-10 text-brand-red drop-shadow-[0_0_10px_rgba(230,57,70,0.5)]" />
               </div>
-              <div className="text-[10px] md:text-lg font-bold text-white text-center translate-z-10">توصيل فوري</div>
+              <div className="text-[10px] md:text-lg font-bold text-white text-center">توصيل فوري</div>
             </div>
           </div>
 

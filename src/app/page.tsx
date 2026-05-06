@@ -42,26 +42,17 @@ export default async function Home() {
                 <p className="text-white/60 mx-auto max-w-2xl text-lg">الوجبات التي نالت إعجاب الجميع وأصبحت الأكثر طلباً في هوت سبايسي.</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-1000">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {bestSellers.map((product: any) => (
-                  <div 
-                    key={product.id} 
-                    className="group bg-white/5 p-6 rounded-3xl border border-white/10 hover:bg-white/10 hover:border-brand-yellow/30 transition-all duration-500 text-right shadow-lg preserve-3d hover:rotate-y-6 hover:-rotate-x-6 hover:translate-z-10"
-                  >
-                    <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 preserve-3d">
-                      <img 
-                        src={product.image || "/placeholder.jpg"} 
-                        alt={product.name} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
-                      />
-                      <div className="absolute top-4 right-4 bg-gradient-to-br from-brand-yellow to-orange-500 text-white p-2.5 rounded-xl shadow-[0_0_15px_rgba(255,186,8,0.5)] translate-z-20">
+                  <div key={product.id} className="group bg-white/5 p-6 rounded-3xl border border-white/10 hover:bg-white/10 hover:border-brand-yellow/30 hover:-translate-y-2 transition-all duration-300 text-right shadow-lg">
+                    <div className="relative aspect-square rounded-2xl overflow-hidden mb-6">
+                      <img src={product.image || "/placeholder.jpg"} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute top-4 right-4 bg-gradient-to-br from-brand-yellow to-orange-500 text-white p-2.5 rounded-xl shadow-[0_0_15px_rgba(255,186,8,0.5)]">
                         <Trophy className="w-5 h-5 drop-shadow-md" />
                       </div>
                     </div>
-                    <h3 className="text-2xl font-bold mb-2 text-brand-beige group-hover:translate-x-[-5px] transition-transform duration-300">{product.name}</h3>
-                    <div className="text-3xl font-black text-brand-yellow mt-4 group-hover:scale-110 origin-right transition-transform duration-300">
-                      {product.price} <span className="text-sm font-medium text-white/50">ر.ي</span>
-                    </div>
+                    <h3 className="text-2xl font-bold mb-2 text-brand-beige">{product.name}</h3>
+                    <div className="text-3xl font-black text-brand-yellow mt-4">{product.price} <span className="text-sm font-medium text-white/50">ر.ي</span></div>
                   </div>
                 ))}
               </div>
