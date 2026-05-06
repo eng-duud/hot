@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,21 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      // Update CSS variables for 3D rotation
+      const rotationY = (window.scrollY % 360) * 0.2;
+      const rotationX = Math.sin(window.scrollY * 0.005) * 15;
+      document.documentElement.style.setProperty('--logo-rotate-y', `${rotationY}deg`);
+      document.documentElement.style.setProperty('--logo-rotate-x', `${rotationX}deg`);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
@@ -24,24 +40,42 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 md:h-20 pb-1 md:pb-2 pt-1">
             
             {/* Brand / Logo */}
-            <Link href="/" className="flex items-center gap-4 group">
-              {/* Logo with custom float/pulse animation */}
-              <div className="relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
-                <span className="absolute inset-0 rounded-full bg-brand-red/20 blur-xl group-hover:bg-brand-yellow/30 transition-colors duration-500" />
-                <img
-                  src="/logo.png"
-                  alt="Hot Spicy Logo"
-                  className="relative w-full h-full object-contain animate-premium-logo drop-shadow-[0_0_15px_rgba(255,186,8,0.4)] group-hover:scale-105 transition-transform duration-500"
-                />
+            <Link href="/" className="flex items-center gap-4 group perspective-1000">
+              {/* 3D Floating Logo Container */}
+              <div 
+                id="floating-logo"
+                className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transition-transform duration-300 ease-out preserve-3d"
+                style={{ 
+                  transform: 'translateZ(20px) rotateX(var(--logo-rotate-x, 0deg)) rotateY(var(--logo-rotate-y, 0deg))',
+                }}
+              >
+                {/* Glow Effect */}
+                <span className="absolute inset-0 rounded-full bg-brand-red/30 blur-2xl group-hover:bg-brand-yellow/40 transition-colors duration-500 animate-pulse-slow" />
+                
+                {/* Main Logo Image with 3D Depth Simulation */}
+                <div className="relative w-full h-full preserve-3d floating-3d-animation">
+                   {/* Front Layer */}
+                  <img
+                    src="/logo.png"
+                    alt="Hot Spicy Logo"
+                    className="relative w-full h-full object-contain drop-shadow-[0_0_20px_rgba(255,186,8,0.5)] z-10"
+                  />
+                  {/* Subtle 3D Depth Layer (Offset) */}
+                  <img
+                    src="/logo.png"
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-contain opacity-40 blur-[1px] translate-z-[-5px] brightness-50"
+                  />
+                </div>
               </div>
               
-              {/* Typography */}
-              <div className="flex flex-col leading-none">
-                <span className="text-xl md:text-2xl font-black tracking-tight drop-shadow-md">
-                  <span className="text-brand-red">هوت</span>
-                  <span className="text-brand-yellow"> سبايسي</span>
+              {/* Typography with 3D Reveal */}
+              <div className="flex flex-col leading-none group-hover:translate-x-1 transition-transform duration-500">
+                <span className="text-xl md:text-3xl font-black tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                  <span className="text-brand-red inline-block hover:scale-110 transition-transform cursor-default">هوت</span>
+                  <span className="text-brand-yellow inline-block hover:scale-110 transition-transform cursor-default"> سبايسي</span>
                 </span>
-                <span className="text-[10px] md:text-xs text-brand-beige/50 font-bold tracking-[0.3em] uppercase mt-1 md:mt-1.5">
+                <span className="text-[10px] md:text-xs text-brand-beige/50 font-bold tracking-[0.4em] uppercase mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                   Hot Spicy
                 </span>
               </div>
