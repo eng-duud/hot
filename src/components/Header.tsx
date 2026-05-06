@@ -20,12 +20,30 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-      // Update CSS variables for 3D rotation
-      const rotationY = (window.scrollY % 360) * 0.2;
-      const rotationX = Math.sin(window.scrollY * 0.005) * 15;
-      document.documentElement.style.setProperty('--logo-rotate-y', `${rotationY}deg`);
-      document.documentElement.style.setProperty('--logo-rotate-x', `${rotationX}deg`);
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = scrollY / maxScroll;
+
+      setScrollY(scrollY);
+
+      // Calculate 3D Path: Zig-Zag across the screen
+      // X move: moves left and right as you scroll
+      const moveX = Math.sin(scrollPercent * Math.PI * 3) * (window.innerWidth * 0.35);
+      
+      // Y move: moves down the viewport as you scroll
+      const moveY = scrollPercent * (window.innerHeight - 150);
+
+      // Rotation: changes as it travels
+      const rotationY = (scrollY % 360);
+      const rotationX = Math.sin(scrollY * 0.01) * 20;
+
+      const logo = document.getElementById('floating-logo');
+      if (logo) {
+        logo.style.setProperty('--logo-translate-x', `${moveX}px`);
+        logo.style.setProperty('--logo-translate-y', `${moveY}px`);
+        logo.style.setProperty('--logo-rotate-y', `${rotationY}deg`);
+        logo.style.setProperty('--logo-rotate-x', `${rotationX}deg`);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -33,20 +51,20 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center pointer-events-none">
       {/* ── Top Bar: Premium Branding ── */}
-      <div className="w-full bg-brand-dark/95 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)] relative z-10 luxury-fire-top">
-        <div className="container mx-auto px-4 md:px-8 relative z-20">
-          <div className="flex items-center justify-between h-16 md:h-20 pb-1 md:pb-2 pt-1">
+      <div className="w-full bg-brand-dark/95 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.3)] relative z-10 luxury-fire-top overflow-visible pointer-events-auto">
+        <div className="container mx-auto px-4 md:px-8 relative z-20 overflow-visible">
+          <div className="flex items-center justify-between h-16 md:h-20 pb-1 md:pb-2 pt-1 overflow-visible">
             
             {/* Brand / Logo */}
             <Link href="/" className="flex items-center gap-4 group perspective-1000">
               {/* 3D Floating Logo Container */}
               <div 
                 id="floating-logo"
-                className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transition-transform duration-300 ease-out preserve-3d"
+                className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 transition-transform duration-100 ease-linear preserve-3d z-[100]"
                 style={{ 
-                  transform: 'translateZ(20px) rotateX(var(--logo-rotate-x, 0deg)) rotateY(var(--logo-rotate-y, 0deg))',
+                  transform: 'translate3d(var(--logo-translate-x, 0px), var(--logo-translate-y, 0px), 50px) rotateX(var(--logo-rotate-x, 0deg)) rotateY(var(--logo-rotate-y, 0deg))',
                 }}
               >
                 {/* Glow Effect */}
@@ -102,7 +120,7 @@ export default function Header() {
       </div>
 
       {/* ── Nav Bar: Edge-to-Edge Modern Bar ── */}
-      <div className="w-full bg-brand-gray/95 backdrop-blur-3xl border-b border-t border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-20 relative">
+      <div className="w-full bg-brand-gray/95 backdrop-blur-3xl border-b border-t border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.6)] z-20 relative pointer-events-auto">
         {/* Subtle top glow line to separate from top bar */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-red/50 to-transparent" />
         
