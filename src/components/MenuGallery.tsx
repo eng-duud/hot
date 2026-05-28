@@ -106,10 +106,10 @@ export default function MenuGallery({ categories }: MenuGalleryProps) {
                   selectedCategoryId === cat.id 
                     ? "border-brand-orange shadow-[0_0_25px_rgba(233,196,106,0.4)] scale-110" 
                     : "border-white/10 hover:border-brand-orange/50",
-                  !(cat as any).image && "bg-brand-orange/5"
+                  !cat.image && "bg-brand-orange/5"
                 )}>
-                  {(cat as any).image ? (
-                    <img src={(cat as any).image} alt={cat.name} className={cn(
+                  {cat.image ? (
+                    <img src={cat.image} alt={cat.name} className={cn(
                       "w-full h-full object-cover transition-all duration-700",
                       selectedCategoryId === cat.id ? "scale-110 brightness-110" : "grayscale-[30%] group-hover:grayscale-0"
                     )} />

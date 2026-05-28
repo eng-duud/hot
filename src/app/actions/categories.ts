@@ -10,7 +10,7 @@ export async function createCategory(formData: FormData) {
   if (!name) return { error: "الاسم مطلوب" };
 
   try {
-    await (db.category as any).create({ 
+    await db.category.create({ 
       data: { 
         name,
         image: image || null
@@ -31,7 +31,7 @@ export async function updateCategory(id: string, formData: FormData) {
   if (!name) return { error: "الاسم مطلوب" };
 
   try {
-    await (db.category as any).update({
+    await db.category.update({
       where: { id },
       data: { 
         name,

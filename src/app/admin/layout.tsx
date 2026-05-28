@@ -1,10 +1,20 @@
+"use client";
+
 import AdminSidebar from "@/components/AdminSidebar";
+import { usePathname } from "next/navigation";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  // Login page renders without the admin shell
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-brand-dark text-white selection:bg-brand-orange/30">
       {/* Sidebar / Top Nav on Mobile */}
@@ -25,4 +35,3 @@ export default function AdminLayout({
     </div>
   );
 }
-

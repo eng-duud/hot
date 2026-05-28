@@ -28,7 +28,7 @@ export default async function MenuPage() {
   return (
     <main className="min-h-screen bg-brand-dark pb-20">
       <Header />
-      <MenuGallery categories={categories as any} />
+      <MenuGallery categories={categories} />
     </main>
   );
 }

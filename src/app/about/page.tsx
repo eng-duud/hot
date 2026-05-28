@@ -4,7 +4,6 @@ import AboutSlider from "@/components/AboutSlider";
 import db from "@/lib/db";
 
 export default async function AboutPage() {
-  // @ts-ignore
   const sliderImages = await db.aboutSliderImage.findMany({
     orderBy: { createdAt: "desc" }
   });

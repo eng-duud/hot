@@ -1,10 +1,11 @@
 "use client";
 
-import { LayoutDashboard, MessageSquare, Package, Tag, LogOut, Home, Image as ImageIcon, ChevronLeft } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Package, Tag, LogOut, Home, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Logo from "@/components/Logo";
 import { cn } from "@/lib/utils";
+import { logoutAdmin } from "@/app/actions/auth";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "لوحة التحكم", icon: LayoutDashboard },
@@ -16,6 +17,13 @@ const NAV_ITEMS = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  async function handleLogout() {
+    await logoutAdmin();
+    router.push("/admin/login");
+    router.refresh();
+  }
 
   return (
     <aside className="w-full lg:w-80 border-b lg:border-b-0 lg:border-l border-white/5 bg-brand-dark/80 backdrop-blur-xl lg:bg-black/40 p-4 lg:p-8 flex flex-col gap-6 lg:gap-10 lg:sticky lg:top-0 lg:h-screen z-[100]">
@@ -32,10 +40,13 @@ export default function AdminSidebar() {
           </div>
         </Link>
         
-        <Link href="/" className="lg:hidden flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500/10 text-brand-red border border-brand-red/20 transition-all hover:bg-brand-red hover:text-white active:scale-95 text-xs font-bold">
+        <button
+          onClick={handleLogout}
+          className="lg:hidden flex items-center gap-2 px-4 py-2 rounded-xl bg-red-500/10 text-brand-red border border-brand-red/20 transition-all hover:bg-brand-red hover:text-white active:scale-95 text-xs font-bold"
+        >
           <LogOut className="w-4 h-4" />
           <span>خروج</span>
-        </Link>
+        </button>
       </div>
 
       {/* Navigation */}
@@ -81,10 +92,13 @@ export default function AdminSidebar() {
           <Home className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium">العودة للموقع</span>
         </Link>
-        <Link href="/" className="w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-brand-red/60 hover:bg-brand-red/10 hover:text-brand-red transition-all group">
+        <button
+          onClick={handleLogout}
+          className="w-full flex items-center gap-4 px-6 py-4 rounded-2xl text-brand-red/60 hover:bg-brand-red/10 hover:text-brand-red transition-all group text-right"
+        >
           <LogOut className="w-5 h-5 group-hover:rotate-12 transition-transform" />
           <span className="font-medium">تسجيل الخروج</span>
-        </Link>
+        </button>
       </div>
     </aside>
   );

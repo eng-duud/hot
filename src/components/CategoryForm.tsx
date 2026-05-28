@@ -13,7 +13,7 @@ interface CategoryFormProps {
 }
 
 export default function CategoryForm({ initialData, onCancel }: CategoryFormProps) {
-  const [imageUrl, setImageUrl] = useState((initialData as any)?.image || "");
+  const [imageUrl, setImageUrl] = useState(initialData?.image || "");
 
   const formAction = initialData 
     ? updateCategory.bind(null, initialData.id)

@@ -44,8 +44,8 @@ export default function CategoryManager({ categories }: CategoryManagerProps) {
               >
                 <div className="flex items-center gap-4">
                   <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-brand-orange/10 flex items-center justify-center border border-white/5">
-                    {(cat as any).image ? (
-                      <img src={(cat as any).image} alt={cat.name} className="w-full h-full object-cover" />
+                    {cat.image ? (
+                      <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
                     ) : (
                       <ImageIcon className="w-6 h-6 text-brand-orange/40" />
                     )}

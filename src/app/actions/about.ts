@@ -7,7 +7,6 @@ export async function addSliderImage(url: string) {
   if (!url) return { error: "URL is required" };
 
   try {
-    // @ts-ignore
     await db.aboutSliderImage.create({
       data: { url }
     });
@@ -22,7 +21,6 @@ export async function addSliderImage(url: string) {
 
 export async function deleteSliderImage(id: string) {
   try {
-    // @ts-ignore
     await db.aboutSliderImage.delete({
       where: { id }
     });
@@ -37,7 +35,6 @@ export async function deleteSliderImage(id: string) {
 
 export async function getSliderImages() {
   try {
-    // @ts-ignore
     return await db.aboutSliderImage.findMany({
       orderBy: { createdAt: "desc" }
     });
