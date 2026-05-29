@@ -68,66 +68,43 @@ export default function MenuGallery({ categories }: MenuGalleryProps) {
         </div>
       </div>
 
-      {/* Circular Categories Row */}
-      <div className="sticky top-[64px] md:top-[80px] z-30 py-4 md:py-8 backdrop-blur-xl">
+      {/* Sleek Pill Categories Row */}
+      <div className="sticky top-[64px] md:top-[80px] z-30 py-2.5 md:py-3.5 backdrop-blur-xl">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="bg-brand-gray/40 border border-white/5 rounded-[2.5rem] p-3 md:p-5 flex items-center justify-start md:justify-center gap-6 md:gap-12 overflow-x-auto scrollbar-hide shadow-2xl relative">
+          <div className="bg-brand-gray/60 border border-white/10 rounded-full p-1.5 flex items-center justify-start md:justify-center gap-2 overflow-x-auto scrollbar-hide shadow-xl relative">
             
-            {/* "All" Category */}
-            <div 
+            {/* "All" Category Pill */}
+            <button 
               onClick={() => setSelectedCategoryId("all")}
-              className="flex flex-col items-center gap-3 cursor-pointer group shrink-0 relative"
-            >
-              <div className={cn(
-                "w-14 h-14 md:w-20 md:h-20 rounded-full flex items-center justify-center border-2 transition-all duration-500 group-hover:scale-110",
+              className={cn(
+                "flex items-center gap-2 px-5 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-black transition-all duration-300 whitespace-nowrap group shrink-0",
                 selectedCategoryId === "all" 
-                  ? "bg-brand-red border-brand-red shadow-[0_0_25px_rgba(230,57,70,0.4)] scale-110" 
-                  : "bg-white/5 border-white/10 hover:border-brand-red/50"
-              )}>
-                <TagIcon className={cn("w-6 h-6 md:w-10 md:h-10 transition-all duration-500", selectedCategoryId === "all" ? "text-white rotate-12" : "text-white/40 group-hover:text-white/80")} />
-              </div>
-              <span className={cn(
-                "font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300",
-                selectedCategoryId === "all" ? "text-brand-red scale-110" : "text-white/40 group-hover:text-white"
-              )}>الكل</span>
-              {selectedCategoryId === "all" && (
-                <div className="absolute -bottom-2 w-1 h-1 rounded-full bg-brand-red shadow-[0_0_10px_#E63946]" />
+                  ? "text-brand-dark bg-gradient-to-r from-brand-yellow to-orange-400 shadow-[0_0_15px_rgba(255,186,8,0.3)]" 
+                  : "bg-white/5 border border-white/5 text-white/70 hover:bg-white/10 hover:text-white"
               )}
-            </div>
+            >
+              <TagIcon className={cn("w-4 h-4 transition-transform", selectedCategoryId === "all" ? "text-brand-dark rotate-12" : "text-brand-red group-hover:rotate-12")} />
+              <span>الكل</span>
+            </button>
 
             {categories.map((cat) => (
-              <div 
+              <button 
                 key={cat.id} 
                 onClick={() => setSelectedCategoryId(cat.id)}
-                className="flex flex-col items-center gap-3 cursor-pointer group shrink-0 relative"
-              >
-                <div className={cn(
-                  "w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center border-2 transition-all duration-500 group-hover:scale-110 overflow-hidden relative",
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-black transition-all duration-300 whitespace-nowrap group shrink-0",
                   selectedCategoryId === cat.id 
-                    ? "border-brand-orange shadow-[0_0_25px_rgba(233,196,106,0.4)] scale-110" 
-                    : "border-white/10 hover:border-brand-orange/50",
-                  !cat.image && "bg-brand-orange/5"
-                )}>
-                  {cat.image ? (
-                    <img src={cat.image} alt={cat.name} className={cn(
-                      "w-full h-full object-cover transition-all duration-700",
-                      selectedCategoryId === cat.id ? "scale-110 brightness-110" : "grayscale-[30%] group-hover:grayscale-0"
-                    )} />
-                  ) : (
-                    <TagIcon className={cn("w-6 h-6 md:w-10 md:h-10 transition-all duration-500", selectedCategoryId === cat.id ? "text-brand-orange" : "text-brand-orange/30 group-hover:text-brand-orange/80")} />
-                  )}
-                  {selectedCategoryId === cat.id && (
-                    <div className="absolute inset-0 bg-brand-orange/10 animate-pulse" />
-                  )}
-                </div>
-                <span className={cn(
-                  "font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300",
-                  selectedCategoryId === cat.id ? "text-brand-orange scale-110" : "text-white/40 group-hover:text-white"
-                )}>{cat.name}</span>
-                {selectedCategoryId === cat.id && (
-                  <div className="absolute -bottom-2 w-1 h-1 rounded-full bg-brand-orange shadow-[0_0_10px_#E9C46A]" />
+                    ? "text-brand-dark bg-gradient-to-r from-brand-yellow to-orange-400 shadow-[0_0_15px_rgba(255,186,8,0.3)]" 
+                    : "bg-white/5 border border-white/5 text-white/70 hover:bg-white/10 hover:text-white"
                 )}
-              </div>
+              >
+                {cat.image ? (
+                  <img src={cat.image} alt={cat.name} className="w-4 h-4 md:w-5 md:h-5 rounded-full object-cover" />
+                ) : (
+                  <TagIcon className="w-4 h-4 md:w-5 md:h-5 text-brand-red animate-pulse" />
+                )}
+                <span>{cat.name}</span>
+              </button>
             ))}
           </div>
         </div>

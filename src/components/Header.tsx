@@ -19,7 +19,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.4)] luxury-fire-top transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/85 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.4)] transition-all duration-300">
+      {/* Dynamic fire background overlay */}
+      <div className="absolute inset-0 luxury-fire-top pointer-events-none -z-10" />
       <div className="container mx-auto px-4 md:px-8 relative z-20">
         <div className="flex items-center justify-between h-16 md:h-20">
           
