@@ -12,7 +12,7 @@ export default async function AboutPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      <div className="pt-[112px] md:pt-[136px]">
+      <div className="pt-[76px] md:pt-[96px]">
       {/* Story Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2000&auto=format&fit=crop')] bg-fixed bg-cover bg-center opacity-5 -z-10" />

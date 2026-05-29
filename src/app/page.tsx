@@ -27,8 +27,7 @@ export default async function Home() {
     <main className="flex flex-col min-h-screen">
       <Header />
 
-      {/* Adjust padding to compensate for the new thinner header */}
-      <div className="pt-[112px] md:pt-[136px] flex-1">
+      <div className="pt-[76px] md:pt-[96px] flex-1">
         
         {/* 1. Hero / Intro */}
         <Hero />

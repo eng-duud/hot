@@ -32,7 +32,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-brand-dark">
       <Header />
 
-      <div className="pt-[112px] md:pt-[136px]">
+      <div className="pt-[76px] md:pt-[96px]">
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
           

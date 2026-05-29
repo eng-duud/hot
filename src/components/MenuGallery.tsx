@@ -41,7 +41,7 @@ export default function MenuGallery({ categories }: MenuGalleryProps) {
   }, [categories, selectedCategoryId, searchQuery]);
 
   return (
-    <div className="pt-[112px] md:pt-[136px]">
+    <div className="pt-[76px] md:pt-[96px]">
       {/* Page Header & Search */}
       <div className="bg-white/5 border-b border-white/10 py-12 md:py-20">
         <div className="container mx-auto px-4 md:px-8 text-center space-y-8">
@@ -69,7 +69,7 @@ export default function MenuGallery({ categories }: MenuGalleryProps) {
       </div>
 
       {/* Circular Categories Row */}
-      <div className="sticky top-[112px] md:top-[136px] z-30 py-4 md:py-8 backdrop-blur-xl">
+      <div className="sticky top-[64px] md:top-[80px] z-30 py-4 md:py-8 backdrop-blur-xl">
         <div className="container mx-auto px-4 md:px-8">
           <div className="bg-brand-gray/40 border border-white/5 rounded-[2.5rem] p-3 md:p-5 flex items-center justify-start md:justify-center gap-6 md:gap-12 overflow-x-auto scrollbar-hide shadow-2xl relative">
             
